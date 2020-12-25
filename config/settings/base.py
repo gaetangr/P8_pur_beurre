@@ -59,7 +59,9 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "purbeurre.users.apps.UsersConfig",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -195,3 +197,11 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+
+# Auth settings
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = "/users/login/"
+
+# Custom user model
+AUTH_USER_MODEL = "users.User"

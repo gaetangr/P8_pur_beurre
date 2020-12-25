@@ -12,6 +12,11 @@ urlpatterns = [
         name="home",),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+        # User management
+    path(
+        "users/",
+        include("purbeurre.users.urls", namespace="users"),
+    ),
 ]
 
 if "debug_toolbar" in settings.INSTALLED_APPS:
