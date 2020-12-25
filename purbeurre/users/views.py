@@ -7,6 +7,13 @@ User = get_user_model()
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
+    """[summary]
+
+    Args:
+        LoginRequiredMixin ([type]): [description]
+        DetailView ([type]): [description]
+    """
+    
     model = User
     # These Next Two Lines Tell the View to Index
     #   Lookups by Username
