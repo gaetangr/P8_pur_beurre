@@ -1,4 +1,4 @@
-name: Prometheus Build
+name: PurBeurre Build
 
 on: [push]
 
@@ -23,7 +23,4 @@ jobs:
     - name: Lint the code with black formatter and isort
       run: |
         isort .
-        black . 
-    - name: Launch unit testings with Pytest
-      run: |
-        pytest
+        black .
