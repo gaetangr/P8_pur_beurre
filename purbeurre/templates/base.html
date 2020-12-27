@@ -1,4 +1,5 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -8,22 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400|Oswald" rel="stylesheet">
-
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    <!-- This file stores project-specific CSS -->
-
 
   </head>
 
@@ -39,31 +31,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">About</a>
-              <li class="nav-item">
-              <a class="nav-link" href="">Cheeses</a>
-              </li>
+              <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} <span class="sr-only">(current)</span></a>
             </li>
             {% if request.user.is_authenticated %}
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
+            
                 <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
               </li>
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="">{% trans "Sign Out" %}</a>
+            
+                <a class="nav-link" href="{% url 'users:logout' %}">{% trans "Sign Out" %}</a>
               </li>
             {% else %}
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="">{% trans "Sign Up" %}</a>
+            
+                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
               </li>
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="">{% trans "Sign In" %}</a>
+            
+                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}">{% trans "Sign In" %}</a>
               </li>
             {% endif %}
           </ul>
@@ -72,6 +58,7 @@
 
     </div>
 
+        <!-- container -->
     <div class="container">
 
       {% if messages %}
@@ -80,13 +67,34 @@
           {% endfor %}
       {% endif %}
 
+
+
       {% block content %}
-        <p>The Ultimate Cheese Index! This text is inherited on other pages!</p>
+        <p>{% trans "Fat yes, but quality fat !" %}</p>
+        <p>{% trans "Find a substitute for the products you eat everyday" %}</p>
       {% endblock content %}
 
-    </div> <!-- /container -->
+    </div> 
+    <!-- /container -->
 
     {% block modal %}{% endblock modal %}
+
+    <!-- Enable user to change language:  https://docs.djangoproject.com/en/3.1/topics/i18n/translation/#the-set-language-redirect-view -->
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+  </form>
+<p class="text-muted small">{% trans "Language preference will be reset if you clear your cookies" %}</p>
 
     <!-- Le javascript
     ================================================== -->

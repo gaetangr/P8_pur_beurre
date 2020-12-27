@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-26 20:33+0100\n"
+"POT-Creation-Date: 2020-12-27 15:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: purbeurre/templates/base.html:53
+#: config/settings/base.py:34
+msgid "French"
+msgstr "Francais"
+
+#: config/settings/base.py:35
+msgid "English"
+msgstr "Anglais"
+
+#: purbeurre/templates/base.html:34
+msgid "Home"
+msgstr "Acceuil"
+
+#: purbeurre/templates/base.html:39
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: purbeurre/templates/base.html:57
+#: purbeurre/templates/base.html:43
 msgid "Sign Out"
 msgstr "Se déconnecter"
 
-#: purbeurre/templates/base.html:62
+#: purbeurre/templates/base.html:48
 msgid "Sign Up"
 msgstr "S'inscrire"
 
-#: purbeurre/templates/base.html:66
+#: purbeurre/templates/base.html:52
 msgid "Sign In"
 msgstr "Se connecter"
 
+#: purbeurre/templates/base.html:73
+msgid "Fat yes, but quality fat !"
+msgstr "Du gras oui, mais de la qualité !"
+
+#: purbeurre/templates/base.html:74
+msgid "Find a substitute for the products you eat everyday"
+msgstr ""
+
+#: purbeurre/templates/base.html:97
+msgid "Language preference will be reset if you clear your cookies"
+msgstr "Votre langage sera réinitialisé si vous supprimez votre cache"
+
+#: purbeurre/templates/users/login.html:6
+#: purbeurre/templates/users/login.html:10
+#, fuzzy
+#| msgid "Sign In"
+msgid "Sign In !"
+msgstr "Se connecter"
+
+#: purbeurre/templates/users/user_form.html:6
+#: purbeurre/templates/users/user_form.html:10
+msgid "Create an account !"
+msgstr "Créer un compte"
+
+#. Translators: This message appears on the admin page only
 #: purbeurre/users/apps.py:8
 msgid "Accounts for users"
 msgstr "Comptes utilisateurs"
 
-#: purbeurre/users/models.py:14
-msgid "Name of User"
-msgstr "Nom de l'utilisateur"
-
-#: purbeurre/users/models.py:14
-msgid "This is shown on the navbar and can be used publicity"
-msgstr "Ceci est visible dans la navigation"
-
-#: purbeurre/users/models.py:15
+#: purbeurre/users/models.py:17
 msgid "Tell the world about yourself, what products do you like etc."
-msgstr ""
+msgstr "Parlez-nous de vous, les produits que vous aimez etc."
+
+#: purbeurre/users/views.py:31 purbeurre/users/views.py:85
+msgid "Welcome back !"
+msgstr "Heureux de vous revoir !"
+
+#: purbeurre/users/views.py:48
+msgid "You logged out successfully !"
+msgstr "Vous vous êtes déconnecté avec succès"
+
+#: purbeurre/users/views.py:130
+msgid "Your account has been created !"
+msgstr "Votre compte a été crée"
+
+#~ msgid "See you soon on PurBeurre !"
+#~ msgstr "A bientôt sur PurBeurre !"
+
+#~ msgid "Name of User"
+#~ msgstr "Nom de l'utilisateur"
+
+#~ msgid "This is shown on the navbar and can be used publicity"
+#~ msgstr "Ceci est visible dans la navigation"

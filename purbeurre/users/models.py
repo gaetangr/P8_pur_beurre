@@ -11,8 +11,11 @@ class User(AbstractUser):
         AbstractUser : An abstract base class for extending user model
     """
 
-    name = models.CharField(_("Name of User"), blank=True, max_length=255, help_text= _("This is shown on the navbar and can be used publicity"))
-    bio = models.TextField("Bio", blank=True, help_text= _("Tell the world about yourself, what products do you like etc."))
+    bio = models.TextField(
+        "Bio",
+        blank=True,
+        help_text=_("Tell the world about yourself, what products do you like etc."),
+    )
 
     def get_absolute_url(self):
         """If model is created, return user to specific path"""
@@ -20,4 +23,4 @@ class User(AbstractUser):
 
     def __str__(self):
         """Return object with an explicit string name"""
-        return self.name
+        return self.username

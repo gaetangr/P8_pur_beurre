@@ -28,6 +28,13 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 LANGUAGE_CODE = "fr"
 
+gettext = lambda x: x
+
+LANGUAGES = (
+    ("fr", gettext("French")),
+    ("en", gettext("English")),
+)
+
 TIME_ZONE = "CET"
 
 USE_I18N = True
@@ -86,12 +93,7 @@ MIDDLEWARE = [
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    # Raises ImproperlyConfigured Exception
-    # if DATABASE_URL Not in os.environ and
-    # the "default" argument is not defined.
-    # The DATABASE_URL environment variables
-    # expect a value in the following format:
-    # DATABASE_URL=postgres://user:password@hostname_or_ip:port/database_name
+    # DATABASE_URL=postgres://user:password@hostname_or_ip:port/database_name, file is .env
     "default": env.db(
         "DATABASE_URL",
         default="postgres:///purbeurre",

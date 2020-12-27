@@ -4,5 +4,5 @@ from django.utils.translation import gettext_lazy as _
 
 class UsersConfig(AppConfig):
     name = "purbeurre.users"
-    # for translation
+    # Translators: This message appears on the admin page only
     verbose_name = _("Accounts for users")
