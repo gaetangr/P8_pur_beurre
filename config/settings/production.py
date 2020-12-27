@@ -10,9 +10,7 @@ from .base import *
 SECRET_KEY = "iz0(aw4pnd17tz&-m)n0t#1is_HAMPYcampyyu=z6_!r-e@df81cqf%v*@"
 
 ALLOWED_HOSTS = [
-    "https://purbeurre-py.herokuapp.com",
-    "http://purbeurre-py.herokuapp.com",
-    "purbeurre-py.herokuapp.com",
+"purbeurre-py.herokuapp.com",
 ]
 
 DEBUG = True
