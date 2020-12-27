@@ -14,6 +14,9 @@ from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DetailView, RedirectView,
                                   TemplateView, UpdateView)
+from django.views.generic.edit import FormView
+
+from .forms import CreationUserForm
 
 User = get_user_model()
 
@@ -112,20 +115,17 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 user_redirect_view = UserRedirectView.as_view()
 
 
-class UserCreateView(CreateView):
+class UserCreateView(SuccessMessageMixin, CreateView):
     """Create a new instance of :model:`users.User`
     and display redirect to homepage.
 
     Args:
+        SuccessMessageMixin (class): Add a success message on successful form submission.
         CreateView (class): View for creating a new object, with a response rendered by a template.
     """
 
     model = User
-    fields = [
-        "username",
-        "password",
-        "email",
-    ]
+    form_class = CreationUserForm
 
     message = _("Your account has been created !")
     success_message = message

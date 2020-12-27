@@ -20,15 +20,19 @@
 
     <!-- Navigation  -->
     {% include "pages/nav.html" %}
+    
+    <div>
+<section class="page-section" style="background-color: #345a61">
+  <div class="container">
+    <div class="row justify-content-center" style="color: #e8a75d;">
+      <div class="col-lg-10 ">
+        {% block content %}
+      {% endblock content %}
+      </div>
+    </div>
+  </div>
+      </section>
 
-    <!-- Intro with header and nav bar  -->
-    {% include "pages/intro.html" %}
-
-    <!-- About, information for the project etc..  -->
-    {% include "pages/about.html" %}
-
-    <!-- Contact information  -->
-    {% include "pages/contact.html" %}
 
     <!-- Footer and legals informations  -->
     <footer class="py-3 footer" style="background-color: #e8a75d">

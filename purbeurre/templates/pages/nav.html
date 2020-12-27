@@ -18,13 +18,13 @@
                   <!-- Navigation links -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <div class="col-14 connect-options">
-                        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <ul class="navbar-nav mr-auto my-2 my-lg-0">
                            <li class="nav-item">
                       <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} <span class="sr-only">(current)</span></a>
             </li>
             {% if request.user.is_authenticated %}
              
-            
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
               </li>
               <li class="nav-item">
@@ -40,6 +40,7 @@
             
                 <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}">{% trans "Sign In" %}</a>
               </li>
+              
                            {% endif %}
                         </ul>
                     </div>
