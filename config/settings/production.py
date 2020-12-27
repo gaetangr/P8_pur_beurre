@@ -9,6 +9,10 @@ from .base import *
 # replace data with env var for V2 !!!
 SECRET_KEY = "iz0(aw4pnd17tz&-m)n0t#1is_HAMPYcampyyu=z6_!r-e@df81cqf%v*@"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://purbeurre-py.herokuapp.com",
+    "http://purbeurre-py.herokuapp.com",
+    "purbeurre-py.herokuapp.com"
+]
 
 DEBUG = True
