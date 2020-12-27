@@ -1,0 +1,93 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Pur Beurre{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400|Oswald" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="mb-1">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'home' %}">Pur Beurre</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} <span class="sr-only">(current)</span></a>
+            </li>
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+            
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+              </li>
+              <li class="nav-item">
+            
+                <a class="nav-link" href="{% url 'users:logout' %}">{% trans "Sign Out" %}</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+            
+                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
+              </li>
+              <li class="nav-item">
+            
+                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}">{% trans "Sign In" %}</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+        <!-- container -->
+    <div class="container">
+
+  
+
+
+      {% block content %}
+        <p>{% trans "Fat yes, but quality fat !" %}</p>
+        <p>{% trans "Find a substitute for the products you eat everyday" %}</p>
+      {% endblock content %}
+
+    </div> 
+    <!-- /container -->
+
+    {% block modal %}{% endblock modal %}
+
+    
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascript %}
+      {# jQuery first, then Popper.js, then Bootstrap JS #}
+       <!--  <script type="text/javascript" src="//www.3dcart.com/lp/cookie-law-generator/cookie.js?skin=cookielaw4&amp;box_radius=0&amp;animation=shake&amp;learnmore=En%20savoir%20plus&amp;morelink=https://www.cnil.fr/fr/reglement-europeen-protection-donnees&amp;accept_text=Continuer&amp;msg=Nous%20utilisons%20des%20cookies%20pour%20vous%20garantir%20la%20meilleure%20exp%C3%A9rience%20sur%20notre%20site.%20Si%20vous%20continuez%20%C3%A0%20utiliser%20ce%20dernier%2C%20nous%20consid%C3%A9rerons%20que%20vous%20acceptez%20l'utilisation%20des%20cookies.%20"></script>-->
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+      <script src="{% static 'js/project.js' %}"></script>
+    {% endblock javascript %}
+  </body>
+</html>
