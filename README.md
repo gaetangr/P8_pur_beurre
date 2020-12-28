@@ -81,3 +81,11 @@ python -m flask run
 ## Authors 💻
 
 - **Gaëtan GROND** - _Initial work_ - [GITHUB](<[https://github.com/Mcflan-7](https://github.com/Mcflan-7)>)
+
+
+```
+coverage report --omit='venv*','config/*','/migrations/'
+```
+```
+
+```
