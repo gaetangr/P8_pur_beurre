@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import (authenticate, get_user, get_user_model, login,
-                                 logout)
+from django.contrib.auth import authenticate, get_user, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,8 +11,13 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DetailView, RedirectView,
-                                  TemplateView, UpdateView)
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    RedirectView,
+    TemplateView,
+    UpdateView,
+)
 from django.views.generic.edit import FormView
 
 from .forms import CreationUserForm
