@@ -1,6 +1,0 @@
-[flake8]
-max-line-length = 130
-# exclude file for my projects (Django, Flask, PY modules)
-exclude = migrations,manage.py,settings.py,.git,__pycache__,P8_grond_gaetan,install.py,requirements.txt,venv,tests
-# ignoring some PEP8 conventions, sorry GUIDO !
-ignore = E266, W503

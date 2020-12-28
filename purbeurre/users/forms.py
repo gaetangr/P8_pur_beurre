@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import TextInput
+from django.forms import TextInput, PasswordInput
 from django.utils.translation import gettext_lazy as _
 
 from .models import User
