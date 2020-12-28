@@ -24,4 +24,4 @@ jobs:
       run: |
         isort .
         black .
-        pytest
+        pytest purbeurre

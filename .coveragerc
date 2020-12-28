@@ -9,3 +9,5 @@ omit =
     */migrations/*
     # omit init file
     *__init__.py*
+    # omit tests files and folder
+    *tests*
