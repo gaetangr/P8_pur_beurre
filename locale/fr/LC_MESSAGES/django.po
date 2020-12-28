@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 22:26+0100\n"
+"POT-Creation-Date: 2020-12-28 13:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,8 @@ msgstr "Nom d'utilisateur"
 
 #: purbeurre/users/forms.py:14
 msgid "Will be shown to your profile, username is shown publicly"
-msgstr "Sera affiché sur votre profil, le nom d'utilisateur est affiché publiquement"
+msgstr ""
+"Sera affiché sur votre profil, le nom d'utilisateur est affiché publiquement"
 
 #: purbeurre/users/forms.py:20
 msgid "Will be used to send a new password and login on the plateform"
