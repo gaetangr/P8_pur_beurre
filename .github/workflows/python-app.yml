@@ -18,8 +18,7 @@ jobs:
     - name: Install dependencies and upgrade pip
       run: |
         python -m pip install --upgrade pip
-        pip install black isort pytest django
-        if [ -f requirements.txt ]; then pip install -r requirements/base.txt; fi
+        pip install -r requirements/local.txt
     - name: Lint the code with black formatter and isort
       run: |
         isort .
