@@ -1,12 +1,11 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import authenticate, get_user, get_user_model, login, logout
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import translation
@@ -92,6 +91,7 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     message = _("Welcome back !")
     success_message = "dekodzodzko"
     # Send the User Back to Their Own Page after a successful Update
+
     def get_success_url(self):
         return reverse(
             "users:detail",

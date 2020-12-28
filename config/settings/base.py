@@ -1,8 +1,7 @@
-""" 
+"""
 Base settings to be extended for production, test and local.
 Settings common to all instances of the project.
 """
-
 from pathlib import Path
 
 import environ
@@ -28,7 +27,10 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 LANGUAGE_CODE = "fr"
 
-gettext = lambda x: x
+
+def gettext(x):
+    return x
+
 
 LANGUAGES = (
     ("fr", gettext("French")),
@@ -97,7 +99,7 @@ DATABASES = {
     "default": env.db(
         "DATABASE_URL",
         default="postgres:///purbeurre",
-    )
+    ),
 }
 # Overwrite Django's default behavior with atomic transaction so it guarantees integrity of the database:
 # https://docs.djangoproject.com/en/3.1/topics/db/transactions/
@@ -139,7 +141,7 @@ TEMPLATES = [
                 "purbeurre.utils.context_processors.settings_context",
             ],
         },
-    }
+    },
 ]
 
 
@@ -162,7 +164,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},

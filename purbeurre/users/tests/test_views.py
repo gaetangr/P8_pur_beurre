@@ -1,8 +1,8 @@
 """ Unit tests related to users/views"""
-
 import pytest
-from .factories import UserFactory
 from django.urls import reverse
+
+from .factories import UserFactory
 
 
 @pytest.fixture
@@ -41,7 +41,10 @@ def test_if_login_views_is_successful(client):
     ],
 )
 def test_if_views_with_authenticated_client_is_successful(
-    client, django_user_model, path_to_test, user
+    client,
+    django_user_model,
+    path_to_test,
+    user,
 ):
     """Test if views related to an authenticated user return 200 response
     :param path_to_test: Pytest fixture to test multiples arguments

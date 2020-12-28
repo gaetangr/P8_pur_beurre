@@ -6,8 +6,9 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # Enable user to change language: https://docs.djangoproject.com/en/3.1/topics/i18n/translation/#the-set-language-redirect-view
-    path('i18n/', include('django.conf.urls.i18n')),
+    # Enable user to change language:
+    # https://docs.djangoproject.com/en/3.1/topics/i18n/translation/#the-set-language-redirect-view
+    path("i18n/", include("django.conf.urls.i18n")),
     path(
         "",
         TemplateView.as_view(template_name="pages/home.html"),
@@ -20,7 +21,6 @@ urlpatterns = [
         "users/",
         include("purbeurre.users.urls", namespace="users"),
     ),
-    
 ]
 
 if "debug_toolbar" in settings.INSTALLED_APPS:

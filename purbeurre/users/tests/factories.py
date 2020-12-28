@@ -1,5 +1,5 @@
-import factory
 import factory.fuzzy
+
 from ..models import User
 
 

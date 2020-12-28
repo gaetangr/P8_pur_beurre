@@ -48,7 +48,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-- Launch the server 
+- Launch the server
 ```
 python manage.py runserver --settings=config.settings.local
 ```

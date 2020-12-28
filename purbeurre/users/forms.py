@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import DateInput, ModelChoiceField, PasswordInput, Textarea, TextInput
+from django.forms import TextInput
 from django.utils.translation import gettext_lazy as _
 
 from .models import User
@@ -18,7 +18,7 @@ class CreationUserForm(forms.ModelForm):
         label="Email",
         help_text=_("Will be used to send a new password and login on the plateform"),
         widget=TextInput(
-            attrs={"autofocus": "", "placeholder": "Ex : ratatouille@goodcheese.com"}
+            attrs={"autofocus": "", "placeholder": "Ex : ratatouille@goodcheese.com"},
         ),
     )
     password = forms.CharField(
@@ -37,11 +37,11 @@ class CreationUserForm(forms.ModelForm):
         fields = ["username", "email", "password"]
 
     def clean(self):
-        cleaned_data = super(CreationUserForm, self).clean()
+        cleaned_data = super().clean()
         password = cleaned_data.get("password")
         confirm_password = cleaned_data.get("confirm_password")
 
         if password != confirm_password:
             raise forms.ValidationError(
-                _("Password and password confirmation does not match")
+                _("Password and password confirmation does not match"),
             )

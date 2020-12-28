@@ -6,14 +6,14 @@
                     <div class="col-12">
                         <a href="/" class="navbar-brand js-scroll-trigger logo">
                             <img id="logo" height="40px" src="{% static 'assets/img/logo_pur_beurre.png' %}">
-                            <span class="ml-2" style="border-bottom: solid 3px #C45525;">Pur Beurre</span> 
+                            <span class="ml-2" style="border-bottom: solid 3px #C45525;">Pur Beurre</span>
                         </a>
                     </div>
                 </div>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
 
                   <!-- Navigation links -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -23,24 +23,24 @@
                       <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} <span class="sr-only">(current)</span></a>
             </li>
             {% if request.user.is_authenticated %}
-             
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
               </li>
               <li class="nav-item">
-            
+
                 <a class="nav-link" href="{% url 'users:logout' %}">{% trans "Sign Out" %}</a>
               </li>
             {% else %}
               <li class="nav-item">
-            
+
                 <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
               </li>
               <li class="nav-item">
-            
+
                 <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}">{% trans "Sign In" %}</a>
               </li>
-              
+
                            {% endif %}
                         </ul>
                     </div>
