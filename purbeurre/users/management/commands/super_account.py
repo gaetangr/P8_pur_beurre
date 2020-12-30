@@ -11,18 +11,12 @@ class Command(BaseCommand):
 
     help = "Creating a superuser for the admin panel with prepopulated datas"
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "username", type=str, help="Define your own username for the admin panel"
-        )
-
     def handle(self, *args, **options):
         admin_url = f"http://127.0.0.1:8000/{settings.ADMIN_URL}"
         default_password = "password"
         default_username = "admin"
 
         print(crayons.yellow("Creating admin user.."))
-
         try:
             user = User.objects.create_user(
                 username=default_username,

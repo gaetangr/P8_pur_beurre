@@ -31,6 +31,13 @@ I used **Python 3.8.0** to built this program, Python 3.0 to 3.8 will work.
 
 ### Installing
 
+N.B : As a convenience I have created a custom command to create a superuser in no time, run the following command:
+
+```
+python manage.py super_account
+```
+
+
 A step by step that tell you how to get my code up and running on your local machine :
 
 - Clone my repo

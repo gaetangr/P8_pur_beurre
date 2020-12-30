@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
+from django.http import HttpResponse
+from django.http.response import JsonResponse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -20,6 +22,7 @@ from django.views.generic import (
 from django.views.generic.edit import FormView
 
 from .forms import CreationUserForm
+import json.decoder
 
 User = get_user_model()
 
@@ -39,6 +42,13 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
 
 user_login_view = UserLoginView.as_view()
+
+
+def get_all_user(request):
+    # TODO
+    user = User.objects.all()
+    username = list([user.username for user in user])
+    return JsonResponse(username, safe=False)
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):

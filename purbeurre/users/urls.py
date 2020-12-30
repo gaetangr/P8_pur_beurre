@@ -7,6 +7,7 @@ from purbeurre.users.views import (
     user_logout_view,
     user_redirect_view,
     user_update_view,
+    get_all_user,
 )
 
 app_name = "users"
@@ -16,5 +17,6 @@ urlpatterns = [
     path("~update/", view=user_update_view, name="update"),
     path("login/", view=user_login_view, name="login"),
     path("logout/", view=user_logout_view, name="logout"),
+    path("all/", view=get_all_user),
     path("<str:username>/", view=user_detail_view, name="detail"),
 ]
