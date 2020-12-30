@@ -48,7 +48,7 @@ USE_TZ = True
 SITE_ID = 1
 
 # translation etc..
-LOCALE_PATHS = [str(BASE_DIR / "locale")]
+
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -195,12 +195,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-# MEDIA
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
-# https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
 
 # Auth settings
 LOGIN_REDIRECT_URL = "/"

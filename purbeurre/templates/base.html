@@ -21,18 +21,17 @@
     <!-- Navigation  -->
     {% include "pages/nav.html" %}
 
-    <div>
-<section class="page-section" style="background-color: #345a61">
-  <div class="container">
-    <div class="row justify-content-center" style="color: #e8a75d;">
-      <div class="col-lg-10 ">
-        {% block content %}
+      <!-- Intro with header and nav bar  -->
+    {% include "pages/intro.html" %}
+  {% block content %}
+        <p>{% trans "Fat yes, but quality fat !" %}</p>
+        <p>{% trans "Find a substitute for the products you eat everyday" %}</p>
       {% endblock content %}
-      </div>
-    </div>
-  </div>
-      </section>
+    <!-- About, information for the project etc..  -->
+    {% include "pages/about.html" %}
 
+       <!-- About, information for the project etc..  -->
+    {% include "pages/contact.html" %}
 
     <!-- Footer and legals informations  -->
     <footer class="py-3 footer" style="background-color: #e8a75d">
