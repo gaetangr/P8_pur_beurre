@@ -6,7 +6,7 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
 
 on: [push]
-env: DJANGO_SETTINGS_MODULE=config.settings.test
+
 jobs:
   flake8:
     runs-on: ubuntu-latest
