@@ -3,12 +3,8 @@ from django.core.management.base import BaseCommand
 
 from purbeurre.products.downloader import DataCleaner, Downloader
 from purbeurre.products.models import Category, Product
-
-downloader = Downloader()
-cleaner = DataCleaner()
-
-products = downloader.get_product(100, 10)
-categories, products = cleaner.clean(products)
+from halo import Halo
+import crayons
 
 
 class Command(BaseCommand):
@@ -17,6 +13,15 @@ class Command(BaseCommand):
     help = """Populate database with OpenFoodfacts Api"""
 
     def handle(self, *args, **options):
+        spinner = Halo(
+            text="Fetching data and populating database...",
+            text_color="yellow",
+            spinner="dots",
+        )
+        downloader = Downloader()
+        cleaner = DataCleaner()
+        products = downloader.get_product(100, 10)
+        categories, products = cleaner.clean(products)
         Category.objects.all().delete()
         for cat in categories:
             Category.objects.create(name=cat)
@@ -34,3 +39,4 @@ class Command(BaseCommand):
                 nutriscore_grade=nutriscore_grade,
                 url=url,
             )
+        spinner.succeed(crayons.green("Success!"))
