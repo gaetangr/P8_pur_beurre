@@ -23,7 +23,6 @@ class Command(BaseCommand):
 
         Product.objects.all().delete()
         for product in products:
-            Category.objects.all()
             name = product["product_name"]  # name
             url = product["url"]  # url product
             nutriscore_grade = product["nutriscore_grade"]  # nutriscore grade
@@ -34,5 +33,4 @@ class Command(BaseCommand):
                 code=code,
                 nutriscore_grade=nutriscore_grade,
                 url=url,
-                categories=cate,
             )
