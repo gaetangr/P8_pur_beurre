@@ -23,13 +23,3 @@ urlpatterns = [
     ),
 ]
 
-if "debug_toolbar" in settings.INSTALLED_APPS:
-    import debug_toolbar
-
-    urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
-
-
-project_name = "Pur Beurre "
-admin.site.site_header = f"{project_name} - Web Plateform"
-admin.site.site_title = f"{project_name} Admin Portal"
-admin.site.index_title = f"Welcome to {project_name} Admin Portal"
