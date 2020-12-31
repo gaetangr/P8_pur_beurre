@@ -8,7 +8,8 @@ env:
 on: [push]
 
 jobs:
-  services: postgresql
+  services: 
+    - postgresql
   flake8:
     runs-on: ubuntu-latest
     steps:
