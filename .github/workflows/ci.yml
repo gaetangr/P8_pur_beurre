@@ -1,7 +1,10 @@
+name: PurBeurre Build
+
 language: python
 python:
   - '3.8'
 
+on: [push]
 
 before_script:
   - pip install -r requirements/local.txt
