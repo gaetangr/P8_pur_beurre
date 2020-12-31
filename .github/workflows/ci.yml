@@ -8,8 +8,6 @@ env:
 on: [push]
 
 jobs:
-  services: 
-    - postgresql
   flake8:
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +24,8 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
-
+        services: 
+          - postgresql
       - name: Checkout Code Repository
         uses: actions/checkout@v2
 
