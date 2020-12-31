@@ -1,0 +1,54 @@
+ {% extends "base.html" %}
+ {% block content %}
+    <h2>Cheese List</h2>
+<ul>
+  {% for product in product_list %}
+
+  <!-- define url for the cheese, app name + path name // then pass slug of cheese as params -->
+<div class="row row-cols-1 row-cols-sm-3 mx-2 mx-sm-0"></div>
+<div class="col my-3">
+	<div class="card product bg-biscuit text-center">
+
+		<div class="card-footer">
+			<p class=" font-weight-bold">{{ product.name }}</p>
+			<p>
+				<a href="{{ product.url }}" title="Voir la fiche"
+					class="btn btn-primary">
+					<i class="far fa-sticky-note fa-2x ml-1 align-middle"></i>
+					<span>Voir la fiche</span>
+				</a>
+			</p>
+
+			<p>
+				<a href="/product/save/3017620420047/8001505005592/?next=/search/3017620420047/"
+					class="btn btn-primary">
+					<i class="far fa-save fa-2x ml-1 align-middle"></i>
+					<span>&nbsp;Sauvegarder</span>
+				</a>
+			</p>
+
+		</div>
+	</div>
+</div>
+</div>
+
+
+  {% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Première</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Précedent</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Dernière page</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Page précedente &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+    {% endblock content %}
