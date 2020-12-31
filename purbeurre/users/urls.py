@@ -1,8 +1,14 @@
 from django.urls import path
 
-from purbeurre.users.views import (user_create_view, user_detail_view,
-                                   user_login_view, user_logout_view,
-                                   user_redirect_view, user_update_view)
+from purbeurre.users.views import (
+    get_all_user,
+    user_create_view,
+    user_detail_view,
+    user_login_view,
+    user_logout_view,
+    user_redirect_view,
+    user_update_view,
+)
 
 app_name = "users"
 urlpatterns = [
@@ -11,5 +17,6 @@ urlpatterns = [
     path("~update/", view=user_update_view, name="update"),
     path("login/", view=user_login_view, name="login"),
     path("logout/", view=user_logout_view, name="logout"),
+    path("all/", view=get_all_user),
     path("<str:username>/", view=user_detail_view, name="detail"),
 ]

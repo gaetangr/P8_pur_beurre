@@ -1,7 +1,9 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from purbeurre.products.models import Product
 
 
 class User(AbstractUser):
@@ -24,3 +26,24 @@ class User(AbstractUser):
     def __str__(self):
         """Return object with an explicit string name"""
         return self.username
+
+
+class Favorite(models.Model):
+    """Stores a favoris, a favoris is related to an instance of :model:`auth.User`
+
+    Args:
+        AbstractUser : An abstract base class for extending user model
+    """
+
+    # Required fields
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="favorite_product"
+    )
+    substitute = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="favorite_substitute"
+    )
+
+    def __str__(self):
+        """Return object with an explicit string name"""
+        return f"Product : {self.product} ---> Substitut : {self.substitute}"

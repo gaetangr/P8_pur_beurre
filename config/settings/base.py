@@ -1,8 +1,7 @@
-""" 
+"""
 Base settings to be extended for production, test and local.
 Settings common to all instances of the project.
 """
-
 from pathlib import Path
 
 import environ
@@ -28,7 +27,10 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 LANGUAGE_CODE = "fr"
 
-gettext = lambda x: x
+
+def gettext(x):
+    return x
+
 
 LANGUAGES = (
     ("fr", gettext("French")),
@@ -46,7 +48,7 @@ USE_TZ = True
 SITE_ID = 1
 
 # translation etc..
-LOCALE_PATHS = [str(BASE_DIR / "locale")]
+
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -68,6 +70,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "purbeurre.users.apps.UsersConfig",
+    "purbeurre.products.apps.ProductsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -97,7 +100,7 @@ DATABASES = {
     "default": env.db(
         "DATABASE_URL",
         default="postgres:///purbeurre",
-    )
+    ),
 }
 # Overwrite Django's default behavior with atomic transaction so it guarantees integrity of the database:
 # https://docs.djangoproject.com/en/3.1/topics/db/transactions/
@@ -139,7 +142,7 @@ TEMPLATES = [
                 "purbeurre.utils.context_processors.settings_context",
             ],
         },
-    }
+    },
 ]
 
 
@@ -162,7 +165,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
@@ -193,12 +196,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-# MEDIA
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
-# https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
 
 # Auth settings
 LOGIN_REDIRECT_URL = "/"

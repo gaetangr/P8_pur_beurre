@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 16:46+0100\n"
+"POT-Creation-Date: 2020-12-28 13:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,13 @@ msgstr "Francais"
 msgid "English"
 msgstr "Anglais"
 
-#: purbeurre/templates/base.html:58
+#: purbeurre/templates/base.html:62
 msgid "Language preference will be reset if you clear your cookies"
 msgstr "Votre langage sera réinitialisé si vous supprimez votre cache"
 
 #: purbeurre/templates/baseold.html:34 purbeurre/templates/pages/nav.html:23
 msgid "Home"
-msgstr "Acceuil"
+msgstr "Accueil"
 
 #: purbeurre/templates/baseold.html:39 purbeurre/templates/pages/nav.html:28
 msgid "My Profile"
@@ -50,19 +50,15 @@ msgstr "S'inscrire"
 msgid "Sign In"
 msgstr "Se connecter"
 
-#: purbeurre/templates/baseold.html:68
+#: purbeurre/templates/baseold.html:68 purbeurre/templates/pages/intro.html:16
 msgid "Fat yes, but quality fat !"
 msgstr "Du gras oui, mais de la qualité !"
 
 #: purbeurre/templates/baseold.html:69 purbeurre/templates/pages/intro.html:20
 msgid "Find a substitute for the products you eat everyday"
 msgstr ""
-
-#: purbeurre/templates/pages/intro.html:16
-#, fuzzy
-#| msgid "Fat yes, but quality fat !"
-msgid "Fat yes, but quality fat"
-msgstr "Du gras oui, mais de la qualité !"
+"Trouvez un produit de substitution pour ceux que vous consommez tous les "
+"jours"
 
 #: purbeurre/templates/users/login.html:7
 #: purbeurre/templates/users/login.html:11
@@ -81,15 +77,44 @@ msgstr "Créer un compte"
 msgid "Accounts for users"
 msgstr "Comptes utilisateurs"
 
+#: purbeurre/users/forms.py:13
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: purbeurre/users/forms.py:14
+msgid "Will be shown to your profile, username is shown publicly"
+msgstr ""
+"Sera affiché sur votre profil, le nom d'utilisateur est affiché publiquement"
+
+#: purbeurre/users/forms.py:20
+msgid "Will be used to send a new password and login on the plateform"
+msgstr "Sera utilisé pour envoyer un mot de passe"
+
+#: purbeurre/users/forms.py:27
+msgid "Choose a strong password"
+msgstr "Préferez un mot de passe fort"
+
+#: purbeurre/users/forms.py:31
+msgid "Password confirmation"
+msgstr "Confirmation du mot de passe"
+
+#: purbeurre/users/forms.py:33
+msgid "Just to be sure.. confirm your password !"
+msgstr "Juste pour être sûr, confirmez votre mot de passe"
+
+#: purbeurre/users/forms.py:47
+msgid "Password and password confirmation does not match"
+msgstr "Les mots de passe ne correspondent pas"
+
 #: purbeurre/users/models.py:17
 msgid "Tell the world about yourself, what products do you like etc."
 msgstr "Parlez-nous de vous, les produits que vous aimez etc."
 
-#: purbeurre/users/views.py:31 purbeurre/users/views.py:85
+#: purbeurre/users/views.py:34 purbeurre/users/views.py:88
 msgid "Welcome back !"
 msgstr "Heureux de vous revoir !"
 
-#: purbeurre/users/views.py:48
+#: purbeurre/users/views.py:51
 msgid "You logged out successfully !"
 msgstr "Vous vous êtes déconnecté avec succès"
 

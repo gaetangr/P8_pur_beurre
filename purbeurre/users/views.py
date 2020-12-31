@@ -1,19 +1,29 @@
+import json.decoder
+
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import (authenticate, get_user, get_user_model, login,
-                                 logout)
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
+from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DetailView, RedirectView,
-                                  TemplateView, UpdateView)
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    RedirectView,
+    TemplateView,
+    UpdateView,
+)
+from django.views.generic.edit import FormView
+
+from .forms import CreationUserForm
 
 User = get_user_model()
 
@@ -33,6 +43,13 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
 
 user_login_view = UserLoginView.as_view()
+
+
+def get_all_user(request):
+    # TODO
+    user = User.objects.all()
+    username = list([user.username for user in user])
+    return JsonResponse(username, safe=False)
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):
@@ -85,6 +102,7 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     message = _("Welcome back !")
     success_message = "dekodzodzko"
     # Send the User Back to Their Own Page after a successful Update
+
     def get_success_url(self):
         return reverse(
             "users:detail",
@@ -112,20 +130,17 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 user_redirect_view = UserRedirectView.as_view()
 
 
-class UserCreateView(CreateView):
+class UserCreateView(SuccessMessageMixin, CreateView):
     """Create a new instance of :model:`users.User`
     and display redirect to homepage.
 
     Args:
+        SuccessMessageMixin (class): Add a success message on successful form submission.
         CreateView (class): View for creating a new object, with a response rendered by a template.
     """
 
     model = User
-    fields = [
-        "username",
-        "password",
-        "email",
-    ]
+    form_class = CreationUserForm
 
     message = _("Your account has been created !")
     success_message = message

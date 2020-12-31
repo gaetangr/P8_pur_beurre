@@ -1,7 +1,7 @@
-""" 
+"""
 Production settings settings to be used for production
 This is the settings file used to host front-desk live in
-production server. That is, the settings 
+production server. That is, the settings
 for the server that host the real live website
 """
 from .base import *

@@ -13,19 +13,20 @@
       class="row h-100 align-items-center justify-content-center text-center">
       <div class="col-lg-10 align-self-end">
         <h1 class="text-uppercase font-weight-bold">
-          {% trans "Fat yes, but quality fat" %} 
         </h1>
         <hr class="divider my-4" />
-        <h2>
+        <h5>
           {% trans "Find a substitute for the products you eat everyday" %}
-        </h2>
+        </h5>
       </div>
+
 
       <div class="col-8">
         <div class="search-div">
           <form action="/products/search/" method="get">
             <div class="input-group input-group-lg mb-3">
               <input
+                id="autocomplete"
                 class="search-input form-control secondary-search"
                 type="text"
                 placeholder="Ex: Nutella"

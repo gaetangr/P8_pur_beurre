@@ -1,4 +1,4 @@
-""" 
+"""
 Local settings to be used for development purposes.
 Development-specific settings include
 DEBUG mode, log level, and activation of
@@ -25,7 +25,7 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
-    }
+    },
 }
 
 # EMAIL
@@ -41,7 +41,7 @@ EMAIL_BACKEND = env(
 # ------------------------------------------------------------------------------
 # http://whitenoise.evans.io/en/latest/django.html#using-whitenoise-in-development
 INSTALLED_APPS = [  # noqa: F405
-    "whitenoise.runserver_nostatic"
+    "whitenoise.runserver_nostatic",
 ] + INSTALLED_APPS  # noqa: F405
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
