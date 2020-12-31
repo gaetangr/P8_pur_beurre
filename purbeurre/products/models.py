@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
 # Create your models here.
 
 # models needed => Link image, img-nutrition-url -or- data,
@@ -28,11 +27,11 @@ class Product(models.Model):
     """ Models related to product """
 
     # Required fields
-    code = models.CharField("Code", max_length=13, unique=True)
+    code = models.CharField("Code", max_length=200, unique=True)
 
-    name = models.CharField(_("Name"), max_length=100)
+    name = models.CharField(_("Name"), max_length=200)
 
-    nutriscore_grade = models.CharField(_("Nutriscode Grade"), max_length=1)
+    nutriscore_grade = models.CharField(_("Nutriscode Grade"), max_length=300)
 
     url = models.URLField(help_text=_("Url to the openfoodfacts website"))
 

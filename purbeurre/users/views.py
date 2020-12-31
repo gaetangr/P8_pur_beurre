@@ -1,13 +1,15 @@
+import json.decoder
+
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse
-from django.http.response import JsonResponse
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponse
+from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import translation
@@ -22,7 +24,6 @@ from django.views.generic import (
 from django.views.generic.edit import FormView
 
 from .forms import CreationUserForm
-import json.decoder
 
 User = get_user_model()
 

@@ -1,13 +1,13 @@
 from django.urls import path
 
 from purbeurre.users.views import (
+    get_all_user,
     user_create_view,
     user_detail_view,
     user_login_view,
     user_logout_view,
     user_redirect_view,
     user_update_view,
-    get_all_user,
 )
 
 app_name = "users"

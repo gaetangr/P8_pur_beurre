@@ -1,9 +1,10 @@
-from django.core.management.base import BaseCommand, CommandError
-from purbeurre.users.models import User
 import crayons
-from yaspin import yaspin
-from django.db.utils import IntegrityError
 from django.conf import settings
+from django.core.management.base import BaseCommand, CommandError
+from django.db.utils import IntegrityError
+from yaspin import yaspin
+
+from purbeurre.users.models import User
 
 
 class Command(BaseCommand):
