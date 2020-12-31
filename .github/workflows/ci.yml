@@ -5,12 +5,10 @@ env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
 
-services:
-  - postgresql
-
 on: [push]
 
 jobs:
+  services: postgresql
   flake8:
     runs-on: ubuntu-latest
     steps:
