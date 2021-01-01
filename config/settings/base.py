@@ -28,14 +28,14 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 LANGUAGE_CODE = "fr"
 
 
-def gettext(x):
-    return x
-
+gettext = lambda x: x
 
 LANGUAGES = (
     ("fr", gettext("French")),
     ("en", gettext("English")),
 )
+
+LOCALE_PATHS = [str(BASE_DIR / "locale")]
 
 TIME_ZONE = "CET"
 

@@ -1,54 +1,62 @@
- {% extends "base.html" %}
- {% block content %}
-    <h2>Cheese List</h2>
-<ul>
-  {% for product in product_list %}
+{% extends "base.html" %}
+{% block content %}
 
-  <!-- define url for the cheese, app name + path name // then pass slug of cheese as params -->
-<div class="row row-cols-1 row-cols-sm-3 mx-2 mx-sm-0"></div>
-<div class="col my-3">
-	<div class="card product bg-biscuit text-center">
+{% for product in product_list %}
+<div class="card-group">
+<div class="card text-center mb-3 col--6">
+  {% if product.nutriscore_grade == "a" %}
+  <div class="card-header bg-success">
+    {% elif product.nutriscore_grade == "b" %}
+    <div class="card-header bg-success">
+      {% elif product.nutriscore_grade == "c" %}
+      <div class="card-header bg-warning">
+        {% elif product.nutriscore_grade == "d" %}
+        <div class="card-header bg-danger">
+          {% elif product.nutriscore_grade == "e" %}
+          <div class="card-header bg-danger">
+            {% endif %}
+            <strong>Nutriscore:</strong> {{ product.nutriscore_grade|upper }}
+          </div>
+          <div class="card-body bg-grey">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <img
+              height="180px"
+              src="https://img.pngio.com/free-rewards-on-groceries-fetch-rewards-products-png-1045_837.png"
+              class="pb-3 mb-3 mt-4"
+              alt=""
+            /><br />
+            <a href="{% url 'products:detail' product.id %}" class="btn btn-primary"
+              >Ficher produit</a>     <a href="{% url 'products:save' product.id %}" class="btn btn-primary"
+              >Sauvegarder</a
+            >
+            <br />
 
-		<div class="card-footer">
-			<p class=" font-weight-bold">{{ product.name }}</p>
-			<p>
-				<a href="{{ product.url }}" title="Voir la fiche"
-					class="btn btn-primary">
-					<i class="far fa-sticky-note fa-2x ml-1 align-middle"></i>
-					<span>Voir la fiche</span>
-				</a>
-			</p>
-
-			<p>
-				<a href="/product/save/3017620420047/8001505005592/?next=/search/3017620420047/"
-					class="btn btn-primary">
-					<i class="far fa-save fa-2x ml-1 align-middle"></i>
-					<span>&nbsp;Sauvegarder</span>
-				</a>
-			</p>
-
-		</div>
-	</div>
+          </div>
+        </div>
 </div>
-</div>
+        {% endfor %}
 
-
-  {% endfor %}
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
+        <div class="pagination">
+          <span class="step-links">
+            {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; Première</a>
             <a href="?page={{ page_obj.previous_page_number }}">Précedent</a>
-        {% endif %}
+            {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
+            <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
 
-        {% if page_obj.has_next %}
+            {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">Dernière page</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Page précedente &raquo;</a>
-        {% endif %}
-    </span>
+            <a href="?page={{ page_obj.paginator.num_pages }}"
+              >Page précedente &raquo;</a
+            >
+            {% endif %}
+          </span>
+        </div>
+        {% endblock content %}
+      </div>
+    </div>
+  </div>
 </div>
-    {% endblock content %}

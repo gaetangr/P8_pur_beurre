@@ -25,15 +25,15 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def save_favorite(request):
-    user = User.objects.get(pk=1)
-    product = Product.objects.get(pk=22)
+def save_favorite(request, id):
+    user = request.user
+    product = Product.objects.get(pk=id)
     Favorite.objects.create(product=product, substitute=product, user=user)
     return redirect("/")
 
 
 def get_all_products(request):
-    # TODO
+    # TODO: Finalize the function
     product = Product.objects.all()
     product = list([product.name for product in product])
     return JsonResponse(product, safe=False)

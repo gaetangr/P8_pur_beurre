@@ -23,6 +23,7 @@ from django.views.generic import (
 from django.views.generic.edit import FormView
 
 from .forms import CreationUserForm
+from .models import Favorite
 
 User = get_user_model()
 
@@ -74,6 +75,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     #   Lookups by Username
     slug_field = "username"
     slug_url_kwarg = "username"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorite"] = Favorite.objects.filter(user=self.request.user)
+        return context
 
 
 user_detail_view = UserDetailView.as_view()
