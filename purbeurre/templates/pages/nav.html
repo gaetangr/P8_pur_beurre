@@ -1,6 +1,6 @@
  {% load static i18n %}
  <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light text-dark fixed-top py-3" id="mainNav">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -24,7 +24,7 @@
             </li>
             {% if request.user.is_authenticated %}
 
-              <li class="nav-item">
+              <li class="nav-item ">
                 <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
               </li>
               <li class="nav-item">

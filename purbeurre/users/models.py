@@ -36,7 +36,9 @@ class Favorite(models.Model):
     """
 
     # Required fields
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="favorite_users"
+    )
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name="favorite_product"
     )

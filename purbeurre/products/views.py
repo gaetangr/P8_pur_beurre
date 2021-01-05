@@ -1,3 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from purbeurre.products.models import Product
+from purbeurre.users.models import Favorite, User
+from django.http.response import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
-# Create your views here.
+
+class ProductListView(ListView):
+    """Simple view that lists all the Products on a single page
+    Args:
+        ListView : Render some list of objects, set by self.model or self.queryset. self.queryset can actually be any iterable of items, not just a queryset.
+    """
+
+    paginate_by = 10
+    model = Product
+
+
+class ProductDetailView(DetailView):
+    """Detail view that lists display information for a given <Model> on a single page
+    Args:
+        DetailView : Render a "detail" view of an object.
+    """
+
+    model = Product
+
+
+def save_favorite(request, id):
+    user = request.user
+    product = Product.objects.get(pk=id)
+    Favorite.objects.create(product=product, substitute=product, user=user)
+    return redirect("/")
+
+
+def get_all_products(request):
+    # TODO: Finalize the function
+    product = Product.objects.all()
+    product = list([product.name for product in product])
+    return JsonResponse(product, safe=False)

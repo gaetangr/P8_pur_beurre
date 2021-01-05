@@ -9,7 +9,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
-from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import translation
@@ -24,6 +23,7 @@ from django.views.generic import (
 from django.views.generic.edit import FormView
 
 from .forms import CreationUserForm
+from .models import Favorite
 
 User = get_user_model()
 
@@ -43,13 +43,6 @@ class UserLoginView(SuccessMessageMixin, LoginView):
 
 
 user_login_view = UserLoginView.as_view()
-
-
-def get_all_user(request):
-    # TODO
-    user = User.objects.all()
-    username = list([user.username for user in user])
-    return JsonResponse(username, safe=False)
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):
@@ -82,6 +75,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     #   Lookups by Username
     slug_field = "username"
     slug_url_kwarg = "username"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorite"] = Favorite.objects.filter(user=self.request.user)
+        return context
 
 
 user_detail_view = UserDetailView.as_view()

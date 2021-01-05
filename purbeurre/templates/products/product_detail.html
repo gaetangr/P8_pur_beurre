@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static i18n %}
+<section class="page-section" id="contact" style="background-color: #345a61">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        {% block title %} {{ product.name }}{% endblock title %}
+{% block content %}
+<div class="card-group">
+<div class="card text-center mb-3 col--6">
+  {% if product.nutriscore_grade == "a" %}
+  <div class="card-header bg-success">
+    {% elif product.nutriscore_grade == "b" %}
+    <div class="card-header bg-success">
+      {% elif product.nutriscore_grade == "c" %}
+      <div class="card-header bg-warning">
+        {% elif product.nutriscore_grade == "d" %}
+        <div class="card-header bg-danger">
+          {% elif product.nutriscore_grade == "e" %}
+          <div class="card-header bg-danger">
+            {% endif %}
+            <strong>Nutriscore:</strong> {{ product.nutriscore_grade|upper }}
+          </div>
+          <div class="card-body bg-grey">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <img
+              height="180px"
+              src="https://img.pngio.com/free-rewards-on-groceries-fetch-rewards-products-png-1045_837.png"
+              class="pb-3 mb-3 mt-4"
+              alt=""
+            /><br />
+            <a href="{{ product.url }}" class="btn btn-primary"
+              >Ficher produit sur OpenFoodFact</a
+            >
+
+          </div>
+        </div>
+</div>
+
+{% endblock content %}
+
+
+      </div>
+    </div>
+  </div>
+</section>

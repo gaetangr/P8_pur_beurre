@@ -24,18 +24,16 @@
 
     <!-- Navigation  -->
     {% include "pages/nav.html" %}
-
-      <!-- Intro with header and nav bar  -->
-    {% include "pages/intro.html" %}
-  {% block content %}
-        <p>{% trans "Fat yes, but quality fat !" %}</p>
-        <p>{% trans "Find a substitute for the products you eat everyday" %}</p>
+    <div class=" mt-5 mb-3 pt-5 pt-5">
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+      {% endif %}
+    {% block content %}
       {% endblock content %}
-    <!-- About, information for the project etc..  -->
-    {% include "pages/about.html" %}
-
-       <!-- About, information for the project etc..  -->
-    {% include "pages/contact.html" %}
+      </div>
+      <!-- Intro with header and nav bar  -->
 
     <!-- Footer and legals informations  -->
     <footer class="py-3 footer" style="background-color: #e8a75d">
@@ -70,7 +68,8 @@
  <!-- TODO : Fix autocomplete -->
 <script>
 $( "#autocomplete" ).autocomplete({
-  source: "users/all/"
+  source: "products/all/",
+  minLength: 0
 });
 </script>
 
