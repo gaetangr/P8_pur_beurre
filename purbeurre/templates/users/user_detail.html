@@ -1,6 +1,7 @@
-{% extends "base.html" %} {% load static i18n %}{% block title %}User: {{
-object.username }}{% endblock %} {% block content %}
-<div class="container">
+{% extends "base.html" %} {% load static i18n %}
+{% block title %}
+User: {{object.username }}{% endblock %} {% block content %}
+<div class="container mt-5 mb-5 pt-5 pb-5">
   <div class="row">
     <div class="col-sm-12">
       <h2>{{ object.username }}  <a class="btn btn-primary" href="{% url 'users:update' %}" role="button"

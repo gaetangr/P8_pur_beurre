@@ -16,10 +16,10 @@ class Downloader:
             "page_size": None,
             "json": 1,
             "page": 1,
-            "fields": "nutriscore_grade,product_name,url,code,categories,image_front_url",
+            "fields": "nutriscore_grade,product_name,url,code,categories,image_url",
         }
 
-    def get_product(self, page_size=20, pages_number=1):
+    def get_product(self, page_size=10, pages_number=1):
         """Display product based on specifics parameters.
 
         Args:
@@ -54,6 +54,7 @@ class DataCleaner:
             product.get("nutriscore_grade")
             and product.get("product_name")
             and product.get("url")
+            and product.get("image_url")
             and product.get("code")
             and product.get("categories")
         ):
@@ -81,8 +82,7 @@ class DataCleaner:
         return clean_categories, clean_products
 
 
-"""
-downloader = Downloader()
+""" downloader = Downloader()
 cleaner = DataCleaner()
 
 products = downloader.get_product()
@@ -90,10 +90,6 @@ categories, products = cleaner.clean(products)
 
 for product in products:
     print(
-        product["product_name"],
-    product["url"],
-    product["nutriscore_grade"],
-    product["code"],
-    product["image_front_url"])
 
- """
+    product["image_url"],
+    product["categories"]) """

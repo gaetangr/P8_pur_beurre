@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from purbeurre.products.models import Product
 from purbeurre.users.models import Favorite, User
 from django.http.response import JsonResponse
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
@@ -29,7 +31,8 @@ def save_favorite(request, id):
     user = request.user
     product = Product.objects.get(pk=id)
     Favorite.objects.create(product=product, substitute=product, user=user)
-    return redirect("/")
+    messages = _("Your substitue has been save !")
+    return redirect("users:detail", user)
 
 
 def get_all_products(request):

@@ -3,11 +3,13 @@
 {% load static i18n %}
 {% block content %}
 {% with action=view.action|default:"Add" %}
-<h1> {% trans "Create an account !" %}</h1>
+<div class="container mt-5 mb-5 pt-5 pb-5">
+<h1> {% trans "Formulaire !" %}</h1>
 <form method="post" action="." >
 {% csrf_token %}
 {{ form|crispy }}
-<button type="submit" class="btn btn-primary"> {% trans "Create an account !" %}</button>
+<button type="submit" class="btn btn-primary"> {% trans "Send" %}</button>
 </form>
+</div>
 {% endwith %}
 {% endblock content %}

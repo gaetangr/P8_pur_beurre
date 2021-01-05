@@ -24,7 +24,7 @@
 
     <!-- Navigation  -->
     {% include "pages/nav.html" %}
-    <div class=" mt-5 mb-3 pt-5 pt-5">
+    <div class=" mt-5 mb-3 pt-5 pt-5 ">
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
