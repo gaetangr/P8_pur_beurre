@@ -9,6 +9,6 @@ from .base import *
 # replace data with env var for V2 !!!
 SECRET_KEY = "iz0(aw4pnd17tz&-m)n0t#1is_HAMPYcampyyu=z6_!r-e@df81cqf%v*@"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["165.22.28.18"]
 
 DEBUG = False
