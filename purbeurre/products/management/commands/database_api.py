@@ -18,6 +18,7 @@ class Command(BaseCommand):
             text_color="yellow",
             spinner="dots",
         )
+        spinner.start()
         downloader = Downloader()
         cleaner = DataCleaner()
         products = downloader.get_product(10, 10)
@@ -28,18 +29,19 @@ class Command(BaseCommand):
 
         Product.objects.all().delete()
         for product in products:
-            name = product["product_name"]
-            image_url = product["image_url"]  # name
+            name = product["product_name"]  # name
+            image_url = product["image_url"]  # img url
             url = product["url"]  # url product
-            categories = product["categories"]  # url product
             nutriscore_grade = product["nutriscore_grade"]  # nutriscore grade
             code = product["code"]
-            # code  # img url
+            categories = cat  # code
+
             Product.objects.create(
                 name=name,
                 code=code,
                 nutriscore_grade=nutriscore_grade,
                 image_url=image_url,
+                categories=categories,
                 url=url,
             )
         spinner.succeed(crayons.green("Success!"))
