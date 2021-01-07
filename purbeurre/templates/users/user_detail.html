@@ -18,7 +18,7 @@ User: {{object.username }}{% endblock %} {% block content %}
         <h2>Favoris:</h2>
         {% for favorites in favorite %}
       <ul>
-        <li> {{ favorites.product }} -  <a href="{% url 'products:detail' favorites.product.pk %} ">Fiche produit</a></li>
+        <li> {{ favorites.product }}  -> {{ favorites.substitute }} -  <a href="{% url 'products:detail' favorites.product.pk %} ">Fiche produit</a></li>
       </ul>
 
 
