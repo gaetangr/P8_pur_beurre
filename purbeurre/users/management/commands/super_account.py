@@ -1,9 +1,11 @@
+# flake8: noqa
+import time
+
 import crayons
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db.utils import IntegrityError
 from halo import Halo
-import time
 
 from purbeurre.users.models import User
 

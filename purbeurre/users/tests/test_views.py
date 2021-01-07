@@ -1,3 +1,4 @@
+# flake8: noqa
 """ Unit tests related to users/views"""
 import pytest
 from django.urls import reverse

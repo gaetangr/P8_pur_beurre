@@ -37,7 +37,7 @@ class Product(models.Model):
 
     image_url = models.URLField(blank=True)
 
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, related_name="categories")
 
     class Meta:
         verbose_name_plural = "Products"

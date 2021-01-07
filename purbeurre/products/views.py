@@ -1,19 +1,29 @@
-from django.shortcuts import render, redirect
-from purbeurre.products.models import Product
-from purbeurre.users.models import Favorite, User
 from django.http.response import JsonResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.shortcuts import redirect, render
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import DetailView, ListView
+
+from purbeurre.products.models import Product, Category
+from purbeurre.users.models import Favorite
+from purbeurre.products.forms import ProductSearchForm
 
 
-class ProductListView(ListView):
-    """Simple view that lists all the Products on a single page
-    Args:
-        ListView : Render some list of objects, set by self.model or self.queryset. self.queryset can actually be any iterable of items, not just a queryset.
-    """
+def search_product(request, product_name):
+    form = ProductSearchForm(request.POST)
+    product_name = Product.objects.filter(name=product_name)[0]
+    cat_pk = product_name.categories.all()[0].pk
+    cat = Category.objects.get(pk=cat_pk)
+    cat = cat.categories.all().order_by("nutriscore_grade")
+    context = {"product": cat}
+    return render(request, "products/product.html", context)
 
-    paginate_by = 10
-    model = Product
+
+def search(request):
+    form = ProductSearchForm(request.POST)
+    if request.method == "POST":
+        data = request.POST.get("name")
+    context = {"form": form}
+    return render(request, "pages/intro.html", context)
 
 
 class ProductDetailView(DetailView):
@@ -25,15 +35,17 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def save_favorite(request, id):
+def save_favorite(request, id_product, id_favoris):
     user = request.user
-    product = Product.objects.get(pk=id)
+    product = Product.objects.get(pk=id_product)
     Favorite.objects.create(product=product, substitute=product, user=user)
-    return redirect("/")
+    messages = _("Your substitue has been save !")
+    return redirect("users:detail", user)
 
 
 def get_all_products(request):
-    # TODO: Finalize the function
+    # TODO: Recherche par prdouit, recupérer le term, term = request.get, pas object all #product object filter
+
     product = Product.objects.all()
     product = list([product.name for product in product])
     return JsonResponse(product, safe=False)
