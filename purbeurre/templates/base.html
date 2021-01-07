@@ -18,6 +18,7 @@
     <link rel="icon" href="{% static 'assets/img/favicon.png' %}" />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
   </head>
   <body id="page-top" class="d-flex flex-column min-vh-100">
@@ -36,6 +37,8 @@
       <!-- Intro with header and nav bar  -->
 
     <!-- Footer and legals informations  -->
+
+    <br><br><br><br><br><br>
     <footer class="py-3 footer" style="background-color: #e8a75d">
       <div class="container">
         <div class="row">
@@ -67,10 +70,12 @@
 
  <!-- TODO : Fix autocomplete -->
 <script>
+
 $( "#autocomplete" ).autocomplete({
-  source: "products/all/",
+  source: "/products/all/",
   minLength: 0
 });
+
 </script>
 
 

@@ -1,22 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Vous pouvez substituer ce produit par :</h1>
+   <div class="row justify-content-center mt-5 mb-5">
 {% for product in product_list %}
-<div class="card-group">
+<div class="card-group ml-1 col-lg-3 col-md-6 d-flex justify-content-center">
 <div class="card text-center mb-3 col--6">
-  {% if product.nutriscore_grade == "a" %}
-  <div class="card-header bg-success">
-    {% elif product.nutriscore_grade == "b" %}
-    <div class="card-header bg-success">
-      {% elif product.nutriscore_grade == "c" %}
-      <div class="card-header bg-warning">
-        {% elif product.nutriscore_grade == "d" %}
-        <div class="card-header bg-danger">
-          {% elif product.nutriscore_grade == "e" %}
-          <div class="card-header bg-danger">
-            {% endif %}
-            <strong>Nutriscore:</strong> {{ product.nutriscore_grade|upper }}
-          </div>
+
+    <h1><span class="badge bg-success" style="position: absolute; right: -6px; top: -15px;">
+
+   {{ product.nutriscore_grade|upper }}
+    </span></h1>
           <div class="card-body bg-grey">
             <h5 class="card-title">{{ product.name }}</h5>
             <img
@@ -33,27 +25,9 @@
 
           </div>
         </div>
-</div>
-        {% endfor %}
-               <div class="pagination">
-          <span class="step-links">
-            {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; Première</a>
-            <a href="?page={{ page_obj.previous_page_number }}">Précedent</a>
-            {% endif %}
+</div>{% endfor %}
 
-            <span class="current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
 
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Dernière page</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}"
-              >Page précedente &raquo;</a
-            >
-            {% endif %}
-          </span>
-        </div>
 
 
         {% endblock content %}

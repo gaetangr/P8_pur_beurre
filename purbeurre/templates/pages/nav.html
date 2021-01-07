@@ -16,34 +16,43 @@
 
 
                   <!-- Navigation links -->
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <div class="col-14 connect-options">
-                        <ul class="navbar-nav mr-auto my-2 my-lg-0">
-                           <li class="nav-item">
-                      <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} <span class="sr-only">(current)</span></a>
-            </li>
-            {% if request.user.is_authenticated %}
+              <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+
+        </ul>
+        <ul class="navbar-nav">
+               <form class="search-form" action="/products/substitutes/" method="get">
+
+
+<div id="div_id_search" class="form-group"> <div class=""> <input type="text" name="search" class="textinput textInput form-control" required id="id_search"> </div> </div>
+
+                            </form>
+           {% if request.user.is_authenticated %}
 
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fas fa-user"></i></a>
+              </li>
+
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--carrot fas fa-carrot"></i></a>
               </li>
               <li class="nav-item">
 
-                <a class="nav-link" href="{% url 'users:logout' %}">{% trans "Sign Out" %}</a>
+                <a class="nav-link" href="{% url 'users:logout' %}"><i class="menu--logout fas fa-sign-out-alt"></i></a>
               </li>
             {% else %}
               <li class="nav-item">
 
-                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
+                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}"><i class="menu--login fas fa-sign-in-alt"></i></a>
               </li>
               <li class="nav-item">
 
-                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}">{% trans "Sign In" %}</a>
+                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}"><i class="menu--login fas fa-sign-in-alt"></i></a>
               </li>
 
                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
+        </ul>
+    </div>
             </div>
         </nav>

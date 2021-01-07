@@ -1,21 +1,27 @@
-from django.shortcuts import render, redirect
-from purbeurre.products.models import Product
-from purbeurre.users.models import Favorite, User
 from django.http.response import JsonResponse
-from django.contrib import messages
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import DetailView, ListView
+
+from purbeurre.products.models import Product
+from purbeurre.users.models import Favorite
 
 
 class ProductListView(ListView):
     """Simple view that lists all the Products on a single page
     Args:
-        ListView : Render some list of objects, set by self.model or self.queryset. self.queryset can actually be any iterable of items, not just a queryset.
+        ListView : Render some list of objects,
+        set by self.model or self.queryset. self.queryset
+        can actually be any iterable of items, not just a queryset.
     """
 
     paginate_by = 10
     model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["products"] = Product.objects.all().filter(name="Nutella")
+        return context
 
 
 class ProductDetailView(DetailView):
@@ -36,7 +42,8 @@ def save_favorite(request, id):
 
 
 def get_all_products(request):
-    # TODO: Finalize the function
+    # TODO: Recherche par prdouit, recupérer le term, term = request.get, pas object all #product object filter
+
     product = Product.objects.all()
     product = list([product.name for product in product])
     return JsonResponse(product, safe=False)
