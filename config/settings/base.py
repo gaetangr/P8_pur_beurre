@@ -23,7 +23,7 @@ if Path(ENV_FILE).exists():
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DJANGO_DEBUG", False)
+DEBUG = env.bool("DJANGO_DEBUG", True)
 
 LANGUAGE_CODE = "fr"
 
