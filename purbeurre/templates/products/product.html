@@ -13,14 +13,22 @@
             <h5 class="card-title">{{ product.name }}</h5>
             <img
               height="180px"
+              width="180px"
               src="{{ product.image_url }}"
               class="pb-3 mb-3 mt-4"
               alt=""
             /><br />
             <a href="{% url 'products:detail' product.id %}" class="btn btn-primary"
-              >Ficher produit</a>     <a href="{% url 'products:save' product.id %}" class="btn btn-primary"
+              >Ficher produit</a>  <br>
+                         {% if request.user.is_authenticated %}
+              <a href="{% url 'products:save' product.id %}" class="btn btn-primary"
               >Sauvegarder</a
             >
+            {% else %} <br>
+<a href="" class="btn btn-primary disabled"
+              >Sauvegarder</a
+            >
+            {% endif %}
             <br />
 
           </div>

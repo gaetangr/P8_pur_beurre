@@ -8,6 +8,16 @@ from purbeurre.users.models import Favorite
 from purbeurre.products.forms import ProductSearchForm
 
 
+class ProductListView(ListView):
+    """Simple view that lists all the Products on a single page
+    Args:
+        ListView : Render some list of objects, set by self.model or self.queryset. self.queryset can actually be any iterable of items, not just a queryset.
+    """
+
+    paginate_by = 10
+    model = Product
+
+
 def search_product(request, product_name):
     form = ProductSearchForm(request.POST)
     product_name = Product.objects.filter(name=product_name)[0]
@@ -35,12 +45,18 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def save_favorite(request, id_product, id_favoris):
+def save_favorite(request, id_product):
+    """Save a substitue for a product and redirct user to
+    the favoris view
+
+    Args:
+        id_product (int): Id of the product to be saved
+    """
     user = request.user
     product = Product.objects.get(pk=id_product)
     Favorite.objects.create(product=product, substitute=product, user=user)
     messages = _("Your substitue has been save !")
-    return redirect("users:detail", user)
+    return redirect("users:fav", user)
 
 
 def get_all_products(request):

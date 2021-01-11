@@ -1,26 +1,40 @@
 {% extends "base.html" %} {% load static i18n %}
 {% block title %}
-User: {{object.username }}{% endblock %} {% block content %}
+Favoris de: {{object.username }}{% endblock %}
+{% block content %}
+
 <div class="container mt-5 mb-5 pt-5 pb-5">
-  <div class="row">
-    <div class="col-sm-12">
+   <h1 class="text-center">Vos favoris</h1>
+   <hr>
+    <div class="row justify-content-center mt-5 mb-5">
 
+{% for product in favorite %}
+<div class="card-group ml-1 col-lg-3 col-md-6 d-flex justify-content-center">
+<div class="card text-center mb-3 col--6">
 
-      </h2>
-      Vos favoris
-      <hr>
+    <h1><span class="badge badge-pill bg-success" style="position: absolute; right: -6px; top: -15px;">
 
-        <h2>Favoris:</h2>
-        {% for favorites in favorite %}
-      <ul>
-        <li> {{ favorites.product }}  -> {{ favorites.substitute }} -  <a href="{% url 'products:detail' favorites.product.pk %} ">Fiche produit</a></li>
-      </ul>
+   {{ product.product.nutriscore_grade|upper }}
+    </span></h1>
+          <div class="card-body bg-grey">
+            <h5 class="card-title">{{ product.product.name}}</h5>
+            <img
+                      height="180px"
+              width="180px"
+              src="{{ product.product.image_url }}"
+              class="pb-3 mb-3 mt-4"
+              alt=""
+            /><br />
+            <a href="{% url 'products:detail' product.id %}" class="btn btn-primary"
+              >Ficher produit</a>
+            <br />
 
-
-        {% endfor %}
-
-    </div>
-  </div>
+          </div>
+        </div>
+</div>{% endfor %}
 
 </div>
+
+
+
 {% endblock content %}
