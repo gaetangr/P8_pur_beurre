@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-01 14:01+0100\n"
+"POT-Creation-Date: 2021-01-11 14:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,37 +28,44 @@ msgstr "Anglais"
 
 #: purbeurre/products/models.py:13 purbeurre/products/models.py:32
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: purbeurre/products/models.py:34
 msgid "Nutriscode Grade"
-msgstr ""
+msgstr "Code Nutriscode"
 
 #: purbeurre/products/models.py:36
 msgid "Url to the openfoodfacts website"
-msgstr ""
+msgstr "Lien vers le site openfoodfacts"
 
-#: purbeurre/templates/base.html:71
+#: purbeurre/products/views.py:56
+#, fuzzy
+#| msgid "Your account has been created !"
+msgid "Your substitue has been save !"
+msgstr "Votre compte a été crée"
+
+#: purbeurre/templates/base.html:66
 msgid "Language preference will be reset if you clear your cookies"
 msgstr "Votre langage sera réinitialisé si vous supprimez votre cache"
 
-#: purbeurre/templates/baseold.html:34 purbeurre/templates/pages/nav.html:23
+#: purbeurre/templates/baseold.html:34
 msgid "Home"
 msgstr "Accueil"
 
-#: purbeurre/templates/baseold.html:39 purbeurre/templates/pages/nav.html:28
+#: purbeurre/templates/baseold.html:39
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: purbeurre/templates/baseold.html:43 purbeurre/templates/pages/nav.html:32
+#: purbeurre/templates/baseold.html:43
 msgid "Sign Out"
 msgstr "Se déconnecter"
 
-#: purbeurre/templates/baseold.html:48 purbeurre/templates/pages/nav.html:37
+#: purbeurre/templates/baseold.html:48
 msgid "Sign Up"
 msgstr "S'inscrire"
 
-#: purbeurre/templates/baseold.html:52 purbeurre/templates/pages/nav.html:41
+#: purbeurre/templates/baseold.html:52 purbeurre/templates/users/login.html:7
+#: purbeurre/templates/users/login.html:11
 msgid "Sign In"
 msgstr "Se connecter"
 
@@ -72,18 +79,15 @@ msgstr ""
 "Trouvez un produit de substitution pour ceux que vous consommez tous les "
 "jours"
 
-#: purbeurre/templates/users/login.html:6
-#: purbeurre/templates/users/login.html:10
-#, fuzzy
-#| msgid "Sign In"
-msgid "Sign In !"
-msgstr "Se connecter"
+#: purbeurre/templates/users/user_form.html:7
+msgid "Formulaire !"
+msgstr ""
 
-#: purbeurre/templates/users/user_form.html:6
-#: purbeurre/templates/users/user_form.html:10
-msgid "Create an account !"
-msgstr "Créer un compte"
+#: purbeurre/templates/users/user_form.html:11
+msgid "Send"
+msgstr "Envoyer"
 
+#. Translators: This message appears on the admin page only
 #: purbeurre/users/apps.py:8
 msgid "Accounts for users"
 msgstr "Comptes utilisateurs"
@@ -121,17 +125,20 @@ msgstr "Les mots de passe ne correspondent pas"
 msgid "Tell the world about yourself, what products do you like etc."
 msgstr "Parlez-nous de vous, les produits que vous aimez etc."
 
-#: purbeurre/users/views.py:40 purbeurre/users/views.py:94
+#: purbeurre/users/views.py:37 purbeurre/users/views.py:120
 msgid "Welcome back !"
 msgstr "Heureux de vous revoir !"
 
-#: purbeurre/users/views.py:57
+#: purbeurre/users/views.py:54
 msgid "You logged out successfully !"
 msgstr "Vous vous êtes déconnecté avec succès"
 
-#: purbeurre/users/views.py:137
+#: purbeurre/users/views.py:163
 msgid "Your account has been created !"
 msgstr "Votre compte a été crée"
+
+#~ msgid "Create an account !"
+#~ msgstr "Créer un compte"
 
 #~ msgid "See you soon on PurBeurre !"
 #~ msgstr "A bientôt sur PurBeurre !"

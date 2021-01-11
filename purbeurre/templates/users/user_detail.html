@@ -15,14 +15,7 @@ User: {{object.username }}{% endblock %} {% block content %}
       <p>{{ object.bio }}</p>
       {% endif %}
        <hr>
-        <h2>Favoris:</h2>
-        {% for favorites in favorite %}
-      <ul>
-        <li> {{ favorites.product }}  -> {{ favorites.substitute }} -  <a href="{% url 'products:detail' favorites.product.pk %} ">Fiche produit</a></li>
-      </ul>
 
-
-        {% endfor %}
 
     </div>
   </div>

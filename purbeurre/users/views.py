@@ -4,7 +4,11 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    AuthenticationForm,
+    UserCreationForm,
+)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -18,7 +22,7 @@ from django.views.generic import (
 )
 from django.views.generic.edit import FormView
 
-from .forms import CreationUserForm
+from .forms import UserRegistrationForm
 from .models import Favorite
 
 User = get_user_model()
@@ -33,6 +37,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
         LoginView (class): Display the login form and handle the login action.
     """
 
+    form_class = AuthenticationForm
     template_name = "users/login.html"
     message = _("Welcome back !")
     success_message = message
@@ -79,6 +84,30 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
 
 user_detail_view = UserDetailView.as_view()
+
+
+class FavDetailView(LoginRequiredMixin, DetailView):
+    """Detail view of an instance of :model:`users.User`
+
+    Args:
+        LoginRequiredMixin (class): Verify that the current user is authenticated.
+        DetailView ([type]): Render a "detail" view of an object.
+    """
+
+    model = User
+    # These Next Two Lines Tell the View to Index
+    #   Lookups by Username
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    template_name = "users/fav_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorite"] = Favorite.objects.filter(user=self.request.user)
+        return context
+
+
+fav_detail_view = FavDetailView.as_view()
 
 
 class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
@@ -134,7 +163,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     """
 
     model = User
-    form_class = CreationUserForm
+    form_class = UserRegistrationForm
 
     message = _("Your account has been created !")
     success_message = message
