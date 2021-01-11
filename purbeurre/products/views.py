@@ -3,9 +3,9 @@ from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView
 
-from purbeurre.products.models import Product, Category
-from purbeurre.users.models import Favorite
 from purbeurre.products.forms import ProductSearchForm
+from purbeurre.products.models import Category, Product
+from purbeurre.users.models import Favorite
 
 
 class ProductListView(ListView):
