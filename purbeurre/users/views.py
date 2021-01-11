@@ -4,14 +4,11 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import (
-    UserCreationForm,
-    AuthenticationForm,
-    UserCreationForm,
-)
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (
     CreateView,
