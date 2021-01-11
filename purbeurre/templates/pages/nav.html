@@ -31,24 +31,24 @@
            {% if request.user.is_authenticated %}
 
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fas fa-user"></i></a>
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fa-2x fas fa-user"></i></a>
               </li>
 
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--carrot fas fa-carrot"></i></a>
+                <a class="nav-link" href="{% url 'users:fav' request.user.username  %}"><i class="menu--carrot fa-2x fas fa-carrot"></i></a>
               </li>
               <li class="nav-item">
 
-                <a class="nav-link" href="{% url 'users:logout' %}"><i class="menu--logout fas fa-sign-out-alt"></i></a>
+                <a class="nav-link" href="{% url 'users:logout' %}"><i class="menu--logout fa-2x fas fa-sign-out-alt"></i></a>
               </li>
             {% else %}
               <li class="nav-item">
 
-                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}"><i class="menu--login fas fa-sign-in-alt"></i></a>
+                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}"><i class="fas fa-user-plus fa-2x ml-1 align-middle"></i></a>
               </li>
               <li class="nav-item">
 
-                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}"><i class="menu--login fas fa-sign-in-alt"></i></a>
+                <a id="log-in-link" class="nav-link" href="{% url 'users:login' %}"><i class="menu--login fa-2x fas fa-sign-in-alt"></i></a>
               </li>
 
                            {% endif %}
