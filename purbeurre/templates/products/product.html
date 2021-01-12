@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<br><br><br> <br>
    <div class="row justify-content-center mt-5 mb-5">
 {% for product in product %}
 <div class="card-group ml-1 col-lg-3 col-md-6 d-flex justify-content-center">
@@ -18,16 +19,19 @@
               class="pb-3 mb-3 mt-4"
               alt=""
             /><br />
+
             <a href="{% url 'products:detail' product.id %}" class="btn btn-primary"
               >Ficher produit</a>  <br>
                          {% if request.user.is_authenticated %}
-              <a href="{% url 'products:save' product.id %}" class="btn btn-primary"
-              >Sauvegarder</a
-            >
+            <form action="{% url 'products:save' product.id %}">
+
+              <button type="submit" class="btn btn-primary">Sauvegarder</button>
+
+            </form>
+            <!-- Formulaire avec input hidden / enregistrer un substitue produit d'origine et nouveau
+              champ input hidden id du produit selectionne et id du produit de la page -->
             {% else %} <br>
-<a href="" class="btn btn-primary disabled"
-              >Sauvegarder</a
-            >
+              <a href="" class="btn btn-primary disabled"> Sauvegarder </a>
             {% endif %}
             <br />
 

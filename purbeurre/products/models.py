@@ -20,7 +20,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    """ Models related to product """
+    """ Models related to a product """
 
     code = models.CharField("Code", max_length=200, unique=True)
 
