@@ -1,8 +1,9 @@
 from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
+from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView
-
+from django.db.models import Count
 from purbeurre.products.forms import ProductSearchForm
 from purbeurre.products.models import Category, Product
 from purbeurre.users.models import Favorite
@@ -19,23 +20,37 @@ class ProductListView(ListView):
     model = Product
 
 
-def search_product(request, product_name):
-    # form = ProductSearchForm(request.POST)
-    product_name = Product.objects.filter(name=product_name)[0]
-    cat_pk = product_name.categories.all()[0].pk
-    cat = Category.objects.get(pk=cat_pk)
-    cat = cat.categories.all().order_by("nutriscore_grade")
-    context = {"product": cat}
-    return render(request, "products/product.html", context)
+def search_product(request):
+    """Given an user input, the method retrieve a product from the database
+    check if it exists, get the category where there is the most occurence and
+    display the data in the template.
 
+    Returns:
+        [str]: List of the products from the same category
+    """
+    user_input = request.GET.get("product_search")
+    # User input normalization
+    user_input = str(user_input).lower().capitalize()
+    try:
+        # Retrieve product object
+        product_name = Product.objects.filter(name=user_input)[0]
+        # Retrieve all categories related to a product and take the first one
+        category_pk_first = product_name.categories.all()[0].pk
+        for cat_number in product_name.categories.all():
+            cat = Category.objects.get(pk=cat_number.pk)
+            print(cat.categories.all().count())
 
-def search(request):
-    form = ProductSearchForm(request.POST)
-    if request.method == "POST":
-        # data = request.POST.get("name")
-        pass
-    context = {"form": form}
-    return render(request, "pages/intro.html", context)
+        # give the cat object the pk of the first category for which product object belong
+        cat = Category.objects.get(pk=category_pk_first)
+        # order product by nutriscore from the best to worst
+        category_products = cat.categories.all().order_by("nutriscore_grade")
+        context = {"product": category_products}
+        return render(request, "products/product.html", context)
+    except IndexError:
+        messages.error(
+            request, (f"Impossible de trouver des subsititues à {user_input}")
+        )
+        return redirect("/")
 
 
 class ProductDetailView(DetailView):

@@ -21,19 +21,17 @@
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 
   </head>
+
   <body id="page-top" class="d-flex flex-column min-vh-100">
 
     <!-- Navigation  -->
     {% include "pages/nav.html" %}
-    <div class="">
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
+
+
+
     {% block content %}
       {% endblock content %}
-      </div>
+
       <!-- Intro with header and nav bar  -->
 
     <!-- Footer and legals informations  -->
@@ -67,15 +65,16 @@
 
     </footer>
 
+
  <!-- TODO : Fix autocomplete -->
-<script>
+<!-- <script>
 
 $( "#autocomplete" ).autocomplete({
   source: "/products/all/",
   minLength: 0
 });
 
-</script>
+</script> -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
