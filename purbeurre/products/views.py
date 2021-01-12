@@ -44,7 +44,7 @@ def search_product(request):
         cat = Category.objects.get(pk=category_pk_first)
         # order product by nutriscore from the best to worst
         category_products = cat.categories.all().order_by("nutriscore_grade")
-        context = {"product": category_products}
+        context = {"product": category_products, "origin_product": product_name.pk}
         return render(request, "products/product.html", context)
     except IndexError:
         messages.error(
@@ -62,7 +62,7 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def save_favorite(request, id_product):
+def save_favorite(request, id_origin, id_substitue):
     """Save a substitue for a product and redirct user to
     the favoris view
 
@@ -70,8 +70,9 @@ def save_favorite(request, id_product):
         id_product (int): Id of the product to be saved
     """
     user = request.user
-    product = Product.objects.get(pk=id_product)
-    Favorite.objects.create(product=product, substitute=product, user=user)
+    origin_product = Product.objects.get(pk=id_origin)
+    product = Product.objects.get(pk=id_substitue)
+    Favorite.objects.create(product=origin_product, substitute=product, user=user)
     return redirect("users:fav", user)
 
 
