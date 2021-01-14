@@ -16,3 +16,4 @@ whitenoise==5.2.0 # https://github.com/evansd/whitenoise
 whitenoise==5.2.0
 crayons
 halo
+python-dotenv
