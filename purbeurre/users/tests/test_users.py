@@ -11,9 +11,7 @@ class TestUserBehavior(StaticLiveServerTestCase):
 
     def setUp(self):
         """Setting up tests variables and config"""
-        self.browser = webdriver.Chrome(
-            "purbeurre/users/tests/chromedriver", options=chrome_options
-        )
+        self.browser = webdriver.Chrome("purbeurre/users/tests/chromedriver")
         self.username = "Gaetan"
         self.email = "hello@gaetangr.me"
         self.password = "you-will-never-guess"
