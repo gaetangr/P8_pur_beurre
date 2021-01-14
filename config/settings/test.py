@@ -1,20 +1,16 @@
 from .base import *
+import os
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
-TEST_RUNNER = "django.test.runner.DiscoverRunner"
-
-SECRET_KEY = env(
-    "DJANGO_SECRET_KEY",
-    default="HIBCJYNwbqnBRCJkXFIPwVVLIBsMLVs8MegExOBVfYrL4tI2UlxVhWBryq4xZHLZ",
-)
-
+ALLOWED_HOSTS = ["*"]
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = False
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "",
-        "USER": "postgres",
-        "PASSWORD": "",
-        "HOST": "",
-        "PORT": "",
-    },
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv("DATABASE_NAME", default=""),
+        "USER": os.getenv("DATABASE_USER", default=""),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD", default=""),
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
 }

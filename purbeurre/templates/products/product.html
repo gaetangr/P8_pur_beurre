@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<br><br><br> <br>
+
+<h1 class="pt-5 mt-5 text-center alert-info pb-5">Veuillez sélectionner un substitue</h1>
    <div class="row justify-content-center mt-5 mb-5">
 {% for product in product %}
 <div class="card-group ml-1 col-lg-3 col-md-6 d-flex justify-content-center">
@@ -10,8 +11,11 @@
 
    {{ product.nutriscore_grade|upper }}
     </span></h1>
+
           <div class="card-body bg-grey">
+
             <h5 class="card-title">{{ product.name }}</h5>
+
             <img
               height="180px"
               width="180px"
@@ -20,30 +24,29 @@
               alt=""
             /><br />
 
-            <a href="{% url 'products:detail' product.id %}" class="btn btn-primary"
-              >Ficher produit</a>  <br>
-                         {% if request.user.is_authenticated %}
-            <form action="{% url 'products:save' product.id %}">
+            <a href="{% url 'products:detail' product.id  %}" class="btn btn-primary"
+              >Ficher produit</a>
+              <br>
+
+            {% if request.user.is_authenticated %}
+            <form action="{% url 'products:save' origin_product product.id  %}">
 
               <button type="submit" class="btn btn-primary">Sauvegarder</button>
 
             </form>
-            <!-- Formulaire avec input hidden / enregistrer un substitue produit d'origine et nouveau
-              champ input hidden id du produit selectionne et id du produit de la page -->
-            {% else %} <br>
+
+            {% else %}
+            <br>
               <a href="" class="btn btn-primary disabled"> Sauvegarder </a>
             {% endif %}
             <br />
 
           </div>
         </div>
-</div>{% endfor %}
-
+</div>
+{% endfor %}
+</div>
 
 
 
         {% endblock content %}
-      </div>
-    </div>
-  </div>
-</div>

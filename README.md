@@ -1,5 +1,5 @@
-![Pur Beurre Build](https://github.com/gaetangr/P7_prometheus/workflows/Prometheus%20Build/badge.svg) ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
-
+[![Build Status](https://travis-ci.com/gaetangr/P8_pur_beurre.svg?branch=development)](https://travis-ci.com/gaetangr/P8_pur_beurre)
+![PurBeurre Build](https://github.com/gaetangr/P8_pur_beurre/workflows/PurBeurre%20Build/badge.svg?event=push)
 # ✨ Pur Beurre ✨
 
 Pur beurre is an application that help you eat better

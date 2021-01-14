@@ -26,6 +26,8 @@ pylint-django==2.3.0  # https://github.com/PyCQA/pylint-django
 pytest==6.2.0  # https://github.com/pytest-dev/pytest
 pytest-django==4.1.0  # https://github.com/pytest-dev/pytest-django
 pytest-sugar==0.9.4  # https://github.com/Frozenball/pytest-sugar
+tchappui-webdrivers==0.3.7
+selenium==3.141.0
 
 # Documentation
 # ------------------------------------------------------------------------------

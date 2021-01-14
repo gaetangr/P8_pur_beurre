@@ -10,6 +10,7 @@
                             <span class="ml-2" style="border-bottom: solid 3px #C45525;">Pur Beurre</span>
                         </a>
                     </div>
+                    </div>
                 </div>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -17,22 +18,30 @@
 
 
                   <!-- Navigation links -->
-              <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="collapse navbar-collapse text-right" id="navbarResponsive">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
 
         </ul>
-        <ul class="navbar-nav">
-               <form class="search-form" action="/products/substitutes/" method="get">
-
-
-<div id="div_id_search" class="form-group"> <div class=""> <input type="text" name="search" class="textinput textInput form-control" required id="id_search"> </div> </div>
-
-                            </form>
+        <ul class="navbar-nav ml-auto pr-2 my-2">
+               <form action="{% url 'products:prod' %}" method="get">
+            <div class="input-group input-group mb-3">
+              <input
+                id="autocomplete"
+                class="search-input form-control secondary-search"
+                type="text"
+                placeholder="Ex: Nutella"
+                aria-label="Search"
+                name="product_search"
+              />
+              <div class="input-group-append">
+              </div>
+            </div>
+          </form>
            {% if request.user.is_authenticated %}
 
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fa-2x fas fa-user"></i></a>
+                <a class="nav-link" id="user-detail" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fa-2x fas fa-user"></i></a>
               </li>
 
               <li class="nav-item ">
