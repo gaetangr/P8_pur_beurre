@@ -1,5 +1,7 @@
 """ Functional test for registration and login user behavior """
+import sys
 
+from config.settings.base import BASE_DIR
 from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
@@ -18,7 +20,8 @@ class TestUserBehavior(StaticLiveServerTestCase):
         """Setting up tests variables and config"""
         super().setUpClass()
         cls.browser = webdriver.Chrome(
-            "purbeurre/users/tests/chromedriver", options=chrome_options
+            executable_path=str(BASE_DIR / "webdrivers" / "chromedriver"),
+            options=chrome_options,
         )
         cls.username = "Gaetan"
         cls.email = "hello@gaetangr.me"
