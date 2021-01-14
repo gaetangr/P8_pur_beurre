@@ -4,11 +4,17 @@ python:
   - "3.8" # Current default Python version for the project
   - "3.9"
 
+addons:
+  # Adding Chrome for functional testing
+  chrome: stable
+
 env: DJANGO_SETTINGS_MODULE="config.settings.local"
 
 # Update PIP
 before_install:
   - python -m pip install --upgrade pip
+  - install-webdrivers --path webdrivers
+
 # Install dependecies from local requirements
 install:
   - pip install -r requirements/local.txt
@@ -18,5 +24,6 @@ services:
 
 script:
   - pytest
+  - python manage.py test -v
   - black .
   - isort .
