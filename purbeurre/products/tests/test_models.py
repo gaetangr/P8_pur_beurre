@@ -15,10 +15,3 @@ def product():
 
 
 pytestmark = pytest.mark.django_db
-
-
-def test__str__(product):
-    """If an user object is created, it should return the object with username"""
-    product = product
-    assert product.__str__() == product.name
-    assert str(product) == product.name
