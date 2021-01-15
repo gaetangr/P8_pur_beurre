@@ -78,7 +78,7 @@ class ProductDetailView(DetailView):
 
 
 def save_favorite(request):
-    """Save a substitue for a product and redirct user to
+    """Save a Substituer for a product and redirct user to
     the favoris view
 
     Args:

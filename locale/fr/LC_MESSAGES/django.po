@@ -41,7 +41,7 @@ msgstr "Lien vers le site openfoodfacts"
 #: purbeurre/products/views.py:56
 #, fuzzy
 #| msgid "Your account has been created !"
-msgid "Your substitue has been save !"
+msgid "Your Substituer has been save !"
 msgstr "Votre compte a été crée"
 
 #: purbeurre/templates/base.html:66
