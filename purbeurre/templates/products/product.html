@@ -24,16 +24,21 @@
               alt=""
             /><br />
 
+
             <a href="{% url 'products:detail' product.id  %}" class="btn btn-primary"
               >Ficher produit</a>
               <br>
 
             {% if request.user.is_authenticated %}
-            <form action="{% url 'products:save' origin_product product.id  %}">
 
+
+            <form action="{% url 'products:save' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="product_id" value="{{ origin_product}}">
+              <input type="hidden" name="substitute_id" value="{{ product.id }}">
               <button type="submit" class="btn btn-primary">Sauvegarder</button>
+          </form>
 
-            </form>
 
             {% else %}
             <br>

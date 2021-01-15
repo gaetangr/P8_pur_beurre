@@ -62,7 +62,7 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-def save_favorite(request, id_origin, id_substitue):
+def save_favorite(request):
     """Save a substitue for a product and redirct user to
     the favoris view
 
@@ -70,8 +70,12 @@ def save_favorite(request, id_origin, id_substitue):
         id_product (int): Id of the product to be saved
     """
     user = request.user
-    origin_product = Product.objects.get(pk=id_origin)
-    product = Product.objects.get(pk=id_substitue)
+    product_id = request.POST.get("product_id")
+    substitute_id = request.POST.get("substitute_id")
+
+    origin_product = Product.objects.get(pk=product_id)
+    product = Product.objects.get(pk=substitute_id)
+
     Favorite.objects.create(product=origin_product, substitute=product, user=user)
     return redirect("users:fav", user)
 
