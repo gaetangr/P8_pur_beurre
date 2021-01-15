@@ -1,7 +1,7 @@
 import pytest
 
-from .factories import ProductFactory
 from ..models import Product
+from .factories import ProductFactory
 
 
 @pytest.fixture

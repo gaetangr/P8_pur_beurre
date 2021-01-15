@@ -1,9 +1,10 @@
+from django.contrib import messages
+from django.db.models import Count
 from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
-from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView
-from django.db.models import Count
+
 from purbeurre.products.forms import ProductSearchForm
 from purbeurre.products.models import Category, Product
 from purbeurre.users.models import Favorite

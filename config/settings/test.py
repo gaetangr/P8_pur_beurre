@@ -1,5 +1,6 @@
-from .base import *
 import os
+
+from .base import *
 
 ALLOWED_HOSTS = ["*"]
 SECRET_KEY = os.getenv("SECRET_KEY")

@@ -3,9 +3,9 @@
 import pytest
 from django.urls import reverse
 
-from .factories import ProductFactory
-
 from purbeurre.users.tests.factories import UserFactory
+
+from .factories import ProductFactory
 
 
 @pytest.fixture

@@ -1,11 +1,12 @@
 """ Functional test for registration and login user behavior """
 import sys
+import time
 
-from config.settings.base import BASE_DIR
-from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
-import time
+from selenium import webdriver
+
+from config.settings.base import BASE_DIR
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
