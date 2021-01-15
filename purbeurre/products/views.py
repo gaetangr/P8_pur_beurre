@@ -60,7 +60,7 @@ def search_product(request):
             "nutriscore_grade"
         )[:9]
 
-        context = {"product": sub_results, "origin_product": product_name.pk}
+        context = {"product": sub_results, "origin_product": product_name}
         return render(request, "products/product.html", context)
     except IndexError:
         messages.error(
