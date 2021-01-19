@@ -32,6 +32,8 @@ class Product(models.Model):
 
     image_url = models.URLField(blank=True)
 
+    image_nutrition_url = models.URLField(blank=True)
+
     categories = models.ManyToManyField(Category, related_name="categories")
 
     class Meta:

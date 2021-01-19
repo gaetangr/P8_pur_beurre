@@ -16,7 +16,7 @@ class Downloader:
             "page_size": None,
             "json": 1,
             "page": 1,
-            "fields": "nutriscore_grade,product_name,url,code,categories,image_url",
+            "fields": "nutriscore_grade,product_name,url,code,categories,image_url,image_nutrition_url",
         }
 
     def get_product(self, page_size=10, pages_number=1):
@@ -55,6 +55,7 @@ class DataCleaner:
             and product.get("product_name")
             and product.get("url")
             and product.get("image_url")
+            and product.get("image_nutrition_url")
             and product.get("code")
             and product.get("categories")
         ):
