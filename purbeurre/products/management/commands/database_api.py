@@ -21,15 +21,12 @@ class Command(BaseCommand):
         )
         spinner.start()
 
-        for category in Category.objects.all():
-            # efface les relations entre product et table d'asso...
-            category.product_set.clear()
         Category.objects.all().delete()
         Product.objects.all().delete()
 
         downloader = Downloader()
         cleaner = DataCleaner()
-        products = downloader.get_product(10, 10)
+        products = downloader.get_product(20, 20)
         categories, products = cleaner.clean(products)
 
         for cat in categories:
@@ -37,6 +34,7 @@ class Command(BaseCommand):
         for product in products:
             name = product["product_name"]  # name
             image_url = product["image_url"]  # img url
+            image_nutrition_url = product["image_nutrition_url"]
             url = product["url"]  # url product
             nutriscore_grade = product["nutriscore_grade"]  # nutriscore grade
             code = product["code"]
@@ -46,10 +44,9 @@ class Command(BaseCommand):
                 code=code,
                 nutriscore_grade=nutriscore_grade,
                 image_url=image_url,
+                image_nutrition_url=image_nutrition_url,
                 url=url,
             )
-            print(len(product["categories"]))
-            print(len(categories))
             for category in product["categories"]:
                 category = Category.objects.get(name=category)
                 product_instance.categories.add(category)

@@ -10,17 +10,6 @@ from purbeurre.products.models import Category, Product
 from purbeurre.users.models import Favorite
 
 
-class ProductListView(ListView):
-    """Simple view that lists all the Products on a single page
-    Args:
-        ListView : Render some list of objects, set by self.model or self.queryset
-        self.queryset can actually be any iterable of items, not just a queryset.
-    """
-
-    paginate_by = 10
-    model = Product
-
-
 def search_product(request):
     """Given an user input, the method retrieve a product from the database
     check if it exists, get the category where there is the most occurence and
@@ -48,19 +37,17 @@ def search_product(request):
         categories_count = categories_all.annotate(count_cat=Count("categories"))
 
         # Return number of categories greater than or equal to the categories in product
-        categories_filter = categories_count.filter(count_cat__gte=2)
+        categories_filter = categories_count.filter(count_cat__gte=4)
 
         # Get products than have a lower nutriscore than the one search by user
         product_filter = categories_filter.filter(
             nutriscore_grade__lte=product.nutriscore_grade
         )
 
-        # Exclude a nutriscore grade and display products from the healthier to the worst
-        sub_results = product_filter.exclude(nutriscore_grade="a").order_by(
-            "nutriscore_grade"
-        )[:9]
+        # display products from the healthier to the worst
+        sub_results = product_filter.order_by("nutriscore_grade")[:6]
 
-        context = {"product": sub_results, "origin_product": product_name.pk}
+        context = {"product": sub_results, "origin_product": product_name}
         return render(request, "products/product.html", context)
     except IndexError:
         messages.error(
@@ -94,11 +81,3 @@ def save_favorite(request):
 
     Favorite.objects.create(product=origin_product, substitute=product, user=user)
     return redirect("users:fav", user)
-
-
-def get_all_products(request):
-    # TODO: Recherche par prdouit, recupérer le term, term = request.get, pas object all #product object filter
-
-    product = Product.objects.all()
-    product = list([product.name for product in product])
-    return JsonResponse(product, safe=False)

@@ -90,6 +90,7 @@ python -m flask run
 - **Gaëtan GROND** - _Initial work_ - [GITHUB](<[https://github.com/Mcflan-7](https://github.com/Mcflan-7)>)
 
 
+coverage report --omit="*/virtualenvs/*,admin.py,config/*,*/migrations/*,manage.py"
 ```
 coverage report --omit='venv*','config/*','/migrations/'
 ```
