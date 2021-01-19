@@ -33,6 +33,15 @@ def test_if_login_views_is_successful(client):
     assert response.status_code == 200
 
 
+@pytest.mark.django_db
+def test_if_fav_views_is_unsuccessful_for_anonymous(client):
+    """View should redirect anonymous user if he tries to access protected page """
+
+    url = reverse("users:fav", kwargs={"username": "anonymous"})
+    response = client.get(url)
+    assert response.status_code == 302
+
+
 # Extra tests to assert some pages return 200 response and that admin page are
 # not available for regular users
 # ------------------------------------------------------------------------------

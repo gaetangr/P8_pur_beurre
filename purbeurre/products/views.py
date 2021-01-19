@@ -10,17 +10,6 @@ from purbeurre.products.models import Category, Product
 from purbeurre.users.models import Favorite
 
 
-class ProductListView(ListView):
-    """Simple view that lists all the Products on a single page
-    Args:
-        ListView : Render some list of objects, set by self.model or self.queryset
-        self.queryset can actually be any iterable of items, not just a queryset.
-    """
-
-    paginate_by = 10
-    model = Product
-
-
 def search_product(request):
     """Given an user input, the method retrieve a product from the database
     check if it exists, get the category where there is the most occurence and
@@ -94,11 +83,3 @@ def save_favorite(request):
 
     Favorite.objects.create(product=origin_product, substitute=product, user=user)
     return redirect("users:fav", user)
-
-
-def get_all_products(request):
-    # TODO: Recherche par prdouit, recupérer le term, term = request.get, pas object all #product object filter
-
-    product = Product.objects.all()
-    product = list([product.name for product in product])
-    return JsonResponse(product, safe=False)
