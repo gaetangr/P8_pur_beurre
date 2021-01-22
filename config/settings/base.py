@@ -203,3 +203,5 @@ LOGIN_URL = "/users/login/"
 
 # Custom user model
 AUTH_USER_MODEL = "users.User"
+
+AUTHENTICATION_BACKENDS = ["purbeurre.users.backends.EmailBackend"]

@@ -40,11 +40,11 @@
            {% if request.user.is_authenticated %}
 
               <li class="nav-item ">
-                <a class="nav-link" id="user-detail" href="{% url 'users:detail' request.user.username  %}"><i class="menu--user fa-2x fas fa-user"></i></a>
+                <a class="nav-link" id="user-detail" href="{% url 'users:detail' request.user.pk  %}"><i class="menu--user fa-2x fas fa-user"></i></a>
               </li>
 
               <li class="nav-item ">
-                <a class="nav-link" href="{% url 'users:fav' request.user.username  %}"><i class="menu--carrot fa-2x fas fa-carrot"></i></a>
+                <a class="nav-link" href="{% url 'users:fav' request.user.pk  %}"><i class="menu--carrot fa-2x fas fa-carrot"></i></a>
               </li>
               <li class="nav-item">
 
