@@ -43,7 +43,6 @@ def search_product(request):
         product_filter = categories_filter.filter(
             nutriscore_grade__lte=product.nutriscore_grade
         )
-
         # display products from the healthier to the worst
         sub_results = product_filter.order_by("nutriscore_grade")[:6]
 

@@ -69,10 +69,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     """
 
     model = User
-    # These Next Two Lines Tell the View to Index
-    #   Lookups by Username
-    slug_field = "username"
-    slug_url_kwarg = "username"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -92,10 +88,6 @@ class FavDetailView(LoginRequiredMixin, DetailView):
     """
 
     model = User
-    # These Next Two Lines Tell the View to Index
-    #   Lookups by Username
-    slug_field = "username"
-    slug_url_kwarg = "username"
     template_name = "users/fav_detail.html"
 
     def get_context_data(self, **kwargs):
@@ -126,12 +118,12 @@ class UserUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse(
             "users:detail",
-            kwargs={"username": self.request.user.username},
+            kwargs={"email": self.request.user.email},
         )
 
     def get_object(self):
         # Only Get the User Record for the User Making the Request
-        return User.objects.get(username=self.request.user.username)
+        return User.objects.get(email=self.request.user.email)
 
 
 user_update_view = UserUpdateView.as_view()
@@ -143,7 +135,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self):
         return reverse(
             "users:detail",
-            kwargs={"username": self.request.user.username},
+            kwargs={"pk": self.request.user.pk},
         )
 
 

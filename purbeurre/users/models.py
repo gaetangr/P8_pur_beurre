@@ -21,11 +21,11 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         """If model is created, return user to specific path"""
-        return reverse("users:detail", kwargs={"username": self.username})
+        return reverse("users:detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         """Return object with an explicit string name"""
-        return self.username
+        return self.pk
 
 
 class Favorite(models.Model):
@@ -35,7 +35,6 @@ class Favorite(models.Model):
         AbstractUser : An abstract base class for extending user model
     """
 
-    # Required fields
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="favorite_users"
     )

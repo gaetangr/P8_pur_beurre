@@ -4,7 +4,7 @@ from ..models import User
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    """Generate fake data for user object"""
+    """Generate fake data for user object """
 
     username = factory.fuzzy.FuzzyText()
     password = factory.fuzzy.FuzzyText()
